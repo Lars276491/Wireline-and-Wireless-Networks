@@ -1,0 +1,551 @@
+\section{Introduzione}
+La prima classificazione dei segnali distingue i segnali tra analogici e digitali. 
+
+I segnali \textbf{analogici} sono continui nel tempo (prevediamo l'andamento tra -inf e +inf) 
+e possono assumere un numero infinito di valori (un esempio di segnale analofico è la voce
+modifca l'aria, le particelle che compongono l'aria e si propaga nello spazio; un altro esempio 
+i segnali radio e elettrocardiogramma), vengono trasemssi e sono riproducibili, il segnale 
+analogico per eccellenza è il vinile, il solco riproduce perfettamente le frequenze.
+Il loro problema è che sono sensibili al rumore, se c'è un disturbo, il segnale viene
+alterato e non è più possibile recuperare il segnale originale, è necessario quindi un 
+segnale più robusto (segnale digitale che posso ricostruire anche se c'è un disturbo, 
+basta che il disturbo non sia troppo grande).
+Quando io passo passo da un segnale analogico a uno digitale ho fatto il
+\textbf{campionamento}, estraggo i campioni a istanti di tempo.
+Quasi tutti i segnali che trasmettiamo sono digitali, ma i segnali analogici campioanti
+ancora non sono digitali (sequenza di 0 e 1).
+Il campionamento mi dice che è vero che perdi informazione, ma Shannon ci dice che è 
+possibile ricostruire il segnale originale (quello che sta in mezzo e viene perso).
+
+I segnali \textbf{digitali} sono discreti nel tempo e possono assumere solo un numero 
+finito di valori.
+
+\section{Concetti base sui segnali}
+
+Per spigare come funziona il teorema di Nyquist-Shannon, è necessario introdurre alcuni
+concetti base sui segnali.
+\subsection{Segnali sinusoidali}
+
+\textbf{Periodo}: Intervallo di tempo dopo cui il segnale si ripete, si misura in secondi.
+
+\textbf{Frequenza}: Numero di periodi al secondo, si misura in Hertz (Hz), è l'inverso del periodo.
+
+\textbf{Ampiezza}: Valore massimo del segnale, si misura in Volt (V).
+
+\textbf{Fase}: Punto di partenza del segnale, si misura in gradi o radianti.
+
+\subsection{Serie di Fourier}
+Se io ho un segnale periodico, comunque sia fatto (esempio onda quadra periodica), 
+si dimostra che tutti i segnali periodici con periodo T possono essere rappresentati 
+come somma di segnali sinusoidali (seno e coseno) con frequenze multiple di 1/T, 
+cioè con frequenze discrete.\\
+Questa rappresentazione è chiamata \textbf{serie di Fourier} e ci dice che qualsiasi 
+segnale periodico può essere scomposto in una serie di segnali sinusoidali, ognuno 
+con una frequenza, ampiezza e fase specifica.
+
+Di solito non trasmetto segnali periodici, ma serve per introdurre trasformata di fourier.
+
+Lo \textbf{spettro di ampiezza} e lo \textbf{spettro di fase} di un segnale 
+sono rispettivamente il modulo e la fase dei coeffienti di Fourier.\\
+Questa rappresentazione nel dominio della frequenza è complementare alla rappresentazione
+del dominio del tempo.\\
+Se conosco lo spettro di ampiezza e di fase conosco il segnale.\\
+Dimensionamento del canale: capire quanta banda mi serve per trasmettere un segnale.
+
+Effetto Gibbs: quando approssimo un segnale con una serie di Fourier, ottengo 
+un'oscillazione vicino ai punti di discontinuità, che non scompare aumentando 
+il numero di termini della serie, ma si riduce a una zona sempre più piccola 
+intorno alla discontinuità.
+
+\subsection{Trasformata di Fourier}
+La \textbf{trasformata di Fourier} estende il concetto della Serie di Fourier ai segnali
+non periodici.
+ In questo corso la trasformata di fourier si chiama spettro del segnale.
+
+Propietà della trasformata: ...
+
+Nessun sistema di trasmissione è perfetto, la priam cosa che fa è attenuare il segnale. 
+Se tutte le componenti di Fourier sono attenuate allo stesso modo, il segnale è 
+attenuato ma non distorto, se invece alcune componenti sono più attenuate di altre, 
+il segnale è distorto.
+
+Tutti i canali di trasmissione hanno una banda ed è caratteristico di ogni sistema.
+Il teorema di Shannon lega il bitrate massimo alla banda.
+
+Nel wifi si usa un canale con una banda piccola.
+
+\subsection{Conversione Analogico Digitale}
+Il sistema deve prima campionare quindi trasformare il segnale analogico in uno tempo discreto
+estrando dei campioni, Nyquist dice la freqeunza minima.
+
+Per trasformare il numero in un dato digitale applico la quantizzazione.
+
+Teorema di Nyquist ci dice prendi il segnale, vedi le frequenze, la frequenza di campionamento
+deve essere almeno il doppio della frequenza massima del segnale. Sotto questa soglia si genera
+l'aliasing, una distorsione che rende impossibile ricostruire il segnale originale.
+
+L'errore di quantizzazione è la differenza tra il segnale analogico originale e il 
+segnale digitale quantizzato, è un errore che si introduce quando si approssima un 
+segnale continuo con un numero finito di livelli discreti.
+
+Risoluzione in bit: con n bit posso rappresentare $2^n$ livelli di quantizzazione, 
+più bit ho, più livelli di quantizzazione posso rappresentare, minore è l'errore 
+di quantizzazione, ma maggiore è la quantità di dati da trasmettere.
+
+\subsection{Teorema del campionamento}
+Quando campione devo campionare con una frequenza maggiore o uguale la frequezna di Nyquist
+$f_c=2W$.
+
+\subsection{Frequenze di Campionamento}
+Per segnali audio, la frequenza di campionamento standard è di 44.1 kHz, 
+che è più del doppio della frequenza massima udibile (20 kHz). 
+Per segnali video, la frequenza di campionamento dipende dalla risoluzione 
+e dalla frequenza dei fotogrammi, ma è generalmente molto più alta.
+
+\subsection{Quantizzazione}
+Una volta campionato, devo decidere quanti intervalli di quantizzazione usare, 
+più intervalli uso, più preciso è il segnale digitale, ma più dati devo trasmettere.
+
+L'attuale standard per il segnale audio è di 16 bit (cioè 65536 livelli).
+
+Di quanto spazio (byte) abbiamo bisogno per memorizzare un'ora di musica?
+Devo trasmettere ogni secondo 44100 campioni, ogni campione è rappresentato da 16 bit 
+(2 byte) al secondo, i canali audio sono due (stereo), quindi 
+$$44100 campioni/s * 2 byte/campione * 2 canali = 176400 byte/s$$
+Byte=635MB da memorizzare
+
+Il bitrate per trasmettere il segnale audio correttamente?
+$$44100 campioni/s * 16 bit/campione * 2 canali = 1411200 bit/s = 1411.2 kbps$$
+
+I byte vengono usati per memorizzare i dati, i bit al secondo vengono usati per indicare
+la velocità di trasmissione dei dati.
+
+\section{Companding Non Lineare}
+Il companding è una tecnica di quantizzazione non lineare che migliora il rapporto 
+segnale-rumore (SNR) per segnali di bassa ampiezza.
+
+\section{PCM Pulse Code Modulation}
+Si prende il segnale registrato dal microfono di un telefono e si dice che la banda è 4 kHz,
+non è vero la banda della voce è arriva pure a 100 kHz, ma per risparmiare banda si taglia a 4 kHz,
+quindi 4 kHz è la banda della voce, la moltiplico per 2 (teorema di Nyquist) e ottengo 8 kHz, 
+quindi campiono a 8 kHz (8000 campioni/s), quindi un campione ogni 125 microsecondi, ogni campione 
+lo quantizzo e lo codifico in 8 bit (256 livelli di quantizzazione), quindi il bitrate è di 64 kbps 
+$(8000 campioni/s * 8 bit/campione)$. 
+
+Devo filtrare il segnale prima di campionarlo, altrimenti rischio di avere aliasing, 
+quindi uso un filtro a 3.4 kHz e poi campiono, estraggo un campione, questo campione viene
+inviato in un quantizzatore che trasforma il segnale in un numero digitale a 8 bit.
+
+Questo è il processo di \textbf{PCM (Pulse Code Modulation)}, è un processo di conversione 
+analogico-digitale, vale per qualsiasi segnale, non solo per la voce, ma anche per il video, 
+l'audio, ecc.\\
+
+In ottica si chiama on off keying, è un processo di modulazione digitale,
+dove il segnale digitale viene modulato su un segnale portante, in questo caso la luce, 
+accendendo e spegnendo la luce per rappresentare i bit 1 e 0.\\
+
+Trasformo una sequenza di bit in un segnale che posso trasmettere, si chiama \textbf{modulazione}.
+
+Devo permettere l'accesso multiplo, al canale di comunicazione di accedere a più utenti, 
+ci sono vari dominii dipende da cosa devo fare. 
+
+Utente 1 deve trasmettere 8 k campioni /s, quindi un campione ogni 125 microsecondi;\\
+Nel frattempo (nei 125 microsendi) trasmetto altri utenti, in particolare ci trasmetto 32 utenti.
+Time division multiplexing (TDM): divido il tempo in slot, ogni slot è di 125 microsecondi,
+e ogni utente trasmette in uno slot, quindi ogni utente trasmette ogni 4 ms $(32 slot * 125 microsecondi/slot)$,
+quindi ogni utente trasmette 250 campioni/s, quindi un bitrate di 2 kbps $(250 campioni/s * 8 bit/campione)$.
+
+\subsection{Codifica di Sorgente}
+Cerca di \textbf{ridurre il numero di bit necessari per rappresentare un segnale}, sfruttando la
+ridondanza del segnale, ad esempio usando la codifica di Huffman, che assegna codici più 
+brevi ai simboli più frequenti.\\
+
+Ci sono due tipi: quelli con la perdita di informazione (lossy) e quelli senza perdita 
+di informazione (lossless).
+
+Primo teorema di Shannon: l'entropia è 
+$$H_s=E\{I_k\}=\sum_{k=1}^{L} p_k \log_2 \frac{1}{p_k}= \sum_{k=1}^{L} p_k I_k$$
+
+\subsection{Codifica di Canale}
+Aggiunge bit, ovvero aggiunge ridondanza, per permettere la rilevazione e la 
+correzione degli errori, per proteggerloi dagli errori introdotti dal rumore o dalle 
+interferenze durante la trasmissione. Il suo scopo è garantire l'integrità del messaggio.\\
+
+Fa riferimento al secondo teorema di Shannon, che stabilisce un limite superiore alla 
+capacità di un canale di comunicazione, indicando la massima velocità alla quale è 
+possibile trasmettere informazioni con una probabilità di errore arbitrariamente bassa, 
+dato un certo livello di rumore.\\
+
+$$C = B \log_2 (1 + \frac{S}{N})$$
+dove:
+- $C$ è la capacità del canale in bit al secondo (bps)
+- $B$ è la banda del canale in hertz (Hz)
+- $S$ è la potenza del segnale in watt (W)
+- $N$ è la potenza del rumore in watt (W)
+Il secondo teorema di Shannon ci dice che se vogliamo trasmettere a una velocità 
+inferiore alla capacità del canale, possiamo farlo con una probabilità di errore 
+arbitrariamente bassa, utilizzando codici di canale appropriati. 
+Se invece vogliamo trasmettere a una velocità superiore alla capacità del canale, 
+non importa quanto sofisticati siano i codici di canale che utilizziamo, non saremo 
+in grado di ridurre la probabilità di errore al di sotto di un certo livello.
+
+Nel gergo comune diciamo che non abbiamo banda, in realtà non abbiamo potenza del 
+segnale, o abbiamo troppo rumore, quindi la capacità del canale è bassa. 
+
+Teorema di Shannon: è possibile trasmettere dati attraverso un canale di comunicazione
+affetto da rumore AWGN (Additive White Gaussian Noise) con bitrate R<C.
+
+\paragraph{Rilevamento e correzione degli errori}
+le tecniche di rilevazione degli errori sono due principali:
+- Automatic repeat request (ARQ): il mittente invia i dati ed anche un codice a rilevazione
+d'errore, che sarà utilizzato in ricezione per individuare gli eventuali errori, ed in 
+tal caso cheidere la ritrasmissione dei dati corrotti. In modi casi la richiesta è
+implicita; il destinatatio invia un acknowledgemebt (ACK) di corretta ricezione dei dati, 
+ed il ...
+- Forward error correction (FEC): il trasmettitore aggiunge bit di ridondanza al 
+messaggio originale, in modo che il ricevitore possa rilevare e correggere gli errori 
+senza dover richiedere una ritrasmissione, ad esempio utilizzando codici di correzione 
+degli errori come i codici di Hamming o i codici Reed-Solomon.
+
+Come controllo che c'è errore e ridondanza? 
+Uso la codifica di hamming, si usa nella codifica di sorgente, quando ho estratto i campioni,
+li codifico in bit, e se c'è un errore, la distanza di hamming mi dice quanti bit sono 
+diversi tra il messaggio originale e quello ricevuto, se la distanza è 0, non c'è errore, 
+se è 1, c'è un errore, se è 2, ci sono due errori, ecc.\\
+
+Il codice di Hamming è un codice di correzione degli errori che può rilevare e 
+correggere errori singoli, e rilevare errori doppi.\\
+
+Forward Error Correction (FEC) è una tecnica di codifica che consente al ricevitore 
+di correggere gli errori senza dover richiedere una ritrasmissione, utilizzando bit 
+di ridondanza aggiunti al messaggio originale.\\
+
+Tutti i sistemi di comunicazione introducono un errore e tutti i sistemi devono usare il BER
+(Bit Error Rate) per misurare la qualità del canale, che è il numero di bit errati diviso
+per il numero totale di bit trasmessi.\\
+
+Il FEc è il sistema di codifica del canale e aggiunge bit di ridondanza per permettere la 
+rilevazione e la correzione degli errori, causati nel canale di comunicazione. 
+Ci sono vari tipi di FEC, quella sistematica e quella non sistematica.\\
+
+Codici a blocchi, sono una categoria di algoritmi per la correzione degli errori (FEC) che
+operano su segmenti di dati di lunghezza fissa. Il trasmettitore aggiunge bit di controllo 
+a un blocco di bit di dati. Il ricevitore usa quei bit per verificare se ci sono stati errori e, 
+se possibile, correggerli.
+
+Tipi di codici a blocchi:
+- Codici di Hamming: possono correggere errori singoli e rilevare errori doppi.
+Il limite di questi codici è che devo mandare tanti bit per correggere pochi errori.
+- Codici di Reed-Solomon: possono correggere errori multipli e sono ampiamente 
+utilizzati in applicazioni come CD, DVD e comunicazioni satellitari.
+Invece di tasmettere la sequenza di bit, considero che i miei simboli sono coefficienti
+di un polimonio di grado k-1. Se ho un polimonio di k-1 o lo descrivo con i coeffiecienti 
+o con i punti, per esempio x=1 il polimonio passa per un determinato punto.
+Lavora prendendo una sequenza di 239 bit, ne aggiunge 16 per trasmettere 255 bit, e 
+con 16 bit di controllo, correggo 8 bit.
+Si riferisce a polimoni di gradi 8.
+- Codici LDPC (Low-Density Parity-Check): sono codici a blocchi che offrono prestazioni 
+vicine al limite di Shannon e sono utilizzati in standard di comunicazione come Wi-Fi e 5G.
+
+
+Controllo degli errori in BLE:
+
+Cyclic Redundancy Check (CRC)
+Codici Convoluzionali
+
+
+\section{Codifica di Linea}
+Ci occupiamo della modulazione, e si può chiamare anche codifica di linea, 
+tutti i sistemi che utilizziamo dobbiamo permettere agli utenti di accedere al mezzo 
+i metodi per permettere la condivisione della risorsa fisica si chiama multiplexing o 
+multiple access. 
+
+Una volta che tutti gli utenti hanno trasmesso nel canale di tramessione in ricezione 
+facciamo le operazioni inverse, non ci occupiamo più della codifica di sorgente, 
+solo richiami della codifica di canale. Adesso entriamo nella parte più importante del 
+corso.\\
+
+La codifica di linea deve emeterre i bit supportante fisica, devo mettere il segnale digitale
+sulla supportante fisica. Esempio filo di rame la supportante fisica è la tensione.
+
+Se il segnale che voglio trasmettere è in fibra ottica, allora devo trasformare il segnake
+in un segnale luminoso, lavoriamo nell'infrarosso.
+In ricezione devo fare la demodulazione da ottico a elettrico.
+
+Vediamo come deve essere fatto il segnale per rappresentare la sequenza di 0 e 1, 
+on-off keying o non return to zero (NRZ), se voglio trasmettere un 1 accendo la luce, se voglio 
+trasmettere uno 0 spengo la luce, è un sistema di modulazione digitale, ma non è molto 
+efficiente, perché se ho una lunga sequenza di 0, non trasmetto nulla, e se ho una 
+lunga sequenza di 1, trasmetto sempre la luce, quindi non c'è sincronizzazione tra il 
+trasmettitore e il ricevitore, non so quando inizia e quando finisce un bit, quindi 
+non è molto efficiente.\\
+
+Un altro sistema è il return to zero (RZ), se voglio trasmettere un 1 accendo la luce 
+per metà del tempo, e poi spengo la luce, se voglio trasmettere uno 0 spengo la luce per
+tutto il tempo, è un sistema di modulazione digitale, ma non è molto efficiente,
+perché se ho una lunga sequenza di 0, non trasmetto nulla, e se ho una lunga sequenza di 
+1, trasmetto sempre la luce, quindi non c'è sincronizzazione tra il trasmettitore e il
+ricevitore, non so quando inizia e quando finisce un bit, quindi non è molto efficiente.\\
+
+Interferenza intersimbolica (ISI): quando il segnale di un simbolo interferisce con il 
+segnale di un simbolo adiacente, causando distorsione e rendendo difficile la corretta 
+interpretazione dei simboli ricevuti.\\
+
+Criterio di Nyquist: per evitare l'interferenza intersimbolica, la forma d'onda del 
+segnale deve essere progettata in modo tale che il segnale di un simbolo sia zero 
+nei punti in cui il segnale di un simbolo adiacente è massimo.\\
+La condizione di nyquist nel dominio del tempo è che la forma d'onda del segnale deve
+ essere zero nei punti in cui il segnale di un simbolo adiacente è massimo, mentre 
+ nel dominio della frequenza è che la banda del segnale deve essere limitata a metà
+ della frequenza di simbolo.\\
+
+Impulsi di Nyquist: sono forme d'onda che soddisfano il criterio di Nyquist e
+ sono utilizzate per trasmettere simboli digitali senza interferenza intersimbolica. 
+ Un esempio comune di impulso di Nyquist è l'impulso di sinc, che ha una forma a 
+ campana e soddisfa il criterio di Nyquist sia nel dominio del tempo che nel dominio 
+ della frequenza.\\
+
+\subsection{Trasmissioni in banda base e banda passante}
+La trasmissione in banda base si riferisce alla trasmissione di segnali digitali senza
+modulazione, mentre la trasmissione in banda passante si riferisce alla trasmissione di
+segnali digitali modulati su una portante a frequenza più alta.\\
+La trasmissione in banda base è più semplice e meno costosa, ma è limitata dalla
+distanza e dalla qualità del canale, mentre la trasmissione in banda passante 
+consente di trasmettere segnali digitali su distanze più lunghe e attraverso canali 
+di qualità inferiore, ma è più complessa e costosa.\\
+....
+....
+....
+\section{Multiplexing}
+Deve permettere a piú utenti di accedere al canale di comunicazione. Questa 
+tecnica è chiamata multiplexing o multiple access. Quindi é la tecnica di 
+trasmettere insieme più segnali su un unico canale di comunicazione, in modo
+che più utenti possano condividere la stessa risorsa fisica.\\
+
+Quasi sempre le operazioni di multiplexing non modificano i segnali, ma li
+combinano in modo da poterli trasmettere insieme.\\
+
+Quale tecnologia possiamo usare per multiplexing? 
+\begin{itemize}
+    \item \textbf{Time Division Multiplexing (TDM)}: divide il tempo in slot e assegna ogni 
+    slot a un utente diverso, permettendo a più utenti di trasmettere in momenti diversi.
+    E' applicata nella telefonia, dove ogni chiamata viene assegnata a uno slot di tempo specifico, 
+    e nella trasmissione dati, dove i pacchetti di dati vengono trasmessi in slot di tempo specifici.
+    \item \textbf{Frequency Division Multiplexing (FDM)}: divide la banda del canale in frequenze 
+    e assegna ogni frequenza a un utente diverso, permettendo a più utenti di trasmettere 
+    contemporaneamente su frequenze diverse. E' applicata nella trasmissione radio, dove ogni 
+    stazione radio trasmette su una frequenza specifica, e nella televisione, dove ogni canale 
+    televisivo trasmette su una frequenza specifica.
+    \item \textbf{Code Division Multiplexing (CDM)}: assegna a ogni utente un codice unico e permette 
+    a più utenti di trasmettere contemporaneamente sulla stessa frequenza, distinguendo i
+    segnali in base ai codici. E' applicata nelle comunicazioni militari, dove ogni unità militare
+    ha un codice unico per comunicare, e nelle reti cellulari, dove ogni utente ha un codice unico per 
+    comunicare con la torre cellulare.
+\end{itemize}
+
+Non é detto che ogni utente é l'utente finale, potrebbe essere un flusso di dati, ad esempio un video, 
+che viene trasmesso da un server a un client, e il server potrebbe essere considerato un utente del 
+canale di comunicazione.\\
+
+\subsection{Time Division Multiplexing - TDM}
+A ogni slot assento a un utente diverso, e mettendo insieme gli slot ottengo
+un frame.\\
+
+Devo trasmettere con una frequenza di campionamento 2 volte la banda del segnale, per trasmettere 
+con correttezza, devo trasemttere 8000 byte al secondo.
+Tra un segnale e un altro c'è un intervallo di 125 microsecondi, quindi in quel tempo posso trasmettere 
+altri utenti, se ho 32 utenti, ogni utente trasmette ogni 4 ms, quindi ogni utente trasmette 250 campioni/s, 
+quindi un bitrate di 2 kbps.\\
+
+Se io non devo trasmettere dati quella risorsa viene persa, se un utente pagava di piú gli davo due slot
+invece di uno, ma se non trasmetteva nulla, quella risorsa veniva persa, quindi non era efficiente.\\
+Anche nelle reti di accesso, l'accesso si basa sul tempo, perché é il modo piú semplice 
+di mettere insieme i dati.\\
+
+Hanno inventato il multiplexing statistico, che non assegna slot fissi agli utenti, ma assegna slot 
+dinamicamente in base alla domanda di traffico, migliorando l'efficienza del canale di comunicazione.\\
+
+Come Funziona?\\
+I segnali vanno memeorizzati e poi affasciati insieme in un frame, e poi trasmessi, in ricezione devo 
+fare l'operazione inversa, estrarre i segnali dai frame, e poi decodificarli.\\
+
+Quando la centrale riceve i dati, deve capire a quale utente appartengono, quindi ogni utente ha un identificatore unico,
+che viene incluso nei dati trasmessi, in modo che la centrale possa instradare i dati al destinatario corretto.\\
+
+Quando ricevo dalla centrale telefonica, so quale é il mio, so il mio tempo, e butto tutto il resto. 
+E'una tecnica molto economica, perché non devo trasmettere dati di controllo, ma è inefficiente, 
+perché se un utente non trasmette nulla, quella risorsa viene persa.\\
+
+Confronto con PCM: \\
+Nella TDM si é creato la Digital Hierarchy, che é una gerarchia di livelli di multiplexing, 
+dove ogni livello combina più flussi di dati in un flusso di dati a velocità più alta.\\
+Il livello più basso è il livello 0, che combina 24 canali di voce a 64 kbps ciascuno, per un totale di 1.544 Mbps (T1).\\
+Il livello successivo è il livello 1, che combina 4 flussi T1 per un totale di 6.312 Mbps (E1).\\
+Il livello successivo è il livello 2, che combina 4 flussi E1 per un totale di 34.368 Mbps (T2).\\
+Il livello successivo è il livello 3, che combina 4 flussi T2 per un totale di 139.264 Mbps (T3).\\
+Il livello successivo è il livello 4, che combina 4 flussi T3 per un totale di 565.148 Mbps (T4).\\
+Il livello più alto è il livello 5, che combina 4 flussi T4 per un totale di 2.260.592 Mbps (T5).\\
+ min 37
+
+
+\section{Orthogonal Frequency Division Multiplexing - OFDM}
+Non è un multiplexing, non significa che stiamo dando accesso a più utenti, è una tecnica 
+di modulazione del segnale, è così potente che ha rivoluzionato i sistemi di comunicazione, 
+è usato nella fibra ottica, è la base dei sistemi wi fi, nelle reti cellulari (4G e 5G), nelle trasmissioni televisive digitali,
+ADSL/VDSL in quest'ultimi però si chiama DMT (Discrete Multitone Modulation).\\
+
+OFDM è una tecnica di modulazione che divide un canale di comunicazione in più sottocanali ortogonali,
+ciascuno dei quali trasmette una porzione del segnale complessivo, permettendo di trasmettere dati a 
+velocità più elevate e migliorando la resistenza alle interferenze e alla distorsione del canale.\\
+
+Quando trasmetto attraverso canale wireless, spesso il canale a causa del multipath fading, 
+attenua alcune frequenze più di altre, questo causa distorsione del segnale, ma se allungo il tempo simbolo, 
+restringo la banda e quindi lo spettro lo riduco, quindi il canale è più piatto, e quindi è più facile trasmettere, ma se allungo troppo il tempo simbolo,
+aumenta la probabilità di interferenza intersimbolica, quindi OFDM divide il canale in più sottocanali (diverso) ortogonali, 
+ognuno con una banda più stretta, permettendo di trasmettere dati a velocità più elevate e migliorando la resistenza 
+alle interferenze e alla distorsione del canale.\\
+
+Quindi prendo la banda disponibile, per esempio per wi fi ho 20 kHz, e la divido in 64 sottocanali, ognuno con una banda di 
+312.5 Hz, e ogni sottocanale trasmette una porzione del segnale complessivo, quindi se ho 64 sottocanali, posso trasmettere 64 
+simboli contemporaneamente, e quindi aumentare la velocità di trasmissione.\\
+
+Efficienza spettrale: $\frac {R(bit-rate)}{B(banda)}$\\
+L'efficienza spettrale di OFDM è elevata, perché permette di trasmettere dati a velocità più elevate utilizzando la stessa banda, 
+migliorando l'efficienza spettrale rispetto ad altre tecniche di modulazione.\\
+La sinc si annulla per valori come 1, 2 ecc, quindi l'idea è che se devo trasmettere un altro segnale nello spettro lo modulo
+per farlo passare per quei valori, in questo modo non interferisce con il segnale precedente, e quindi posso trasmettere più segnali 
+contemporaneamente senza interferenza.\\
+
+La distanza tra i due segnali in frequenza è di $\frac 1 T$. 
+
+Se il mio sistema di trasmissione si comporta strano in una delle frequenze posso rendermene conto e posso facilmente equalizzare.\\
+
+\subsection{Multi-carrier modulation}
+Non è un multiplexing, non è neanche una frequency division multiplexing, è una tecnica di modulazione che utilizza più portanti per trasmettere dati,
+dobbiamo trasformare un segnale con R bit rate in N sottocanali (flussi) attraverso un Serial to Parallel Converter, e poi ciascun flusso
+è trasmesso ad una diversa sottofrequenza (\textbf{subcarrier}).
+Due sottocanali sono ortogonali se la loro frequenza è multipla di $\frac 1 T$ (distano tra loro di $\frac 1 T$), dove T è il tempo simbolo, 
+in questo modo non interferiscono tra loro.\\
+
+Ci aggiungo a questa sottoportante la portante vera, per esempio se la portante è a 2.4 GHz, e la sottoportante è a 312.5 Hz, allora 
+la frequenza del segnale trasmesso sarà 2.4003125 GHz, e così via per gli altri sottocanali.\\
+
+Discrete Multitone Modulation (DMT) è una tecnica di modulazione multi-carrier utilizzata principalmente nelle comunicazioni 
+su linee telefoniche, come ADSL e VDSL, per trasmettere dati a velocità elevate su distanze relativamente lunghe. 
+DMT divide la banda disponibile in più sottocanali, ognuno dei quali trasmette una porzione del segnale complessivo, 
+migliorando l'efficienza spettrale e la resistenza alle interferenze e alla distorsione del canale.\\
+
+Allargo la durata del bit, quindi la durata del simbolo è $\frac N R$, ho ristretto lo spettro. La separazione di ogni sinc 
+è fatta in modo da non avere interferenza tra i sottocanali.\\
+
+Come faccio a filtrarle visto che sono sovrapposte? Uso il principio di ortogonalità, i due segnali sono ortogonali se l'integrale del loro 
+prodotto nella durata del simbolo è uguale a zero (ovvero delta di Dirac).
+
+Scelgo gli esponenziali complessi come funzioni di base, sono chiamati kernel di Fourier, e come frequenza scelgo $\frac m T$, 
+dove m è un intero, in questo modo ottengo la trasformata di Fourier discreta (DFT), che mi permette di trasformare il segnale dal dominio del 
+tempo al dominio della frequenza, e viceversa.\\
+
+Quindi se prendo la frequenza $\frac 1 T$ ho un coseno, se prendo la frequenza $\frac 2 T$ ho un coseno con frequenza doppia, e così via, 
+in questo modo ottengo i sottocanali ortogonali.\\
+
+Poichè se faccio trasformata di una rect ottengo una sinc, se la rect è moltiplicata per un coseno, ottengo una sinc traslata.
+\subsection{Fast Fourier Transform - FFT}
+La Fast Fourier Transform (FFT) è un algoritmo efficiente per calcolare la trasformata di Fourier discreta (DFT) di un segnale,
+che è una rappresentazione del segnale nel dominio della frequenza.\\
+
+Il processamento del segnale è fatto a livello digitale, ci faccio la trasformata di fourier e poi lo mando al DAC (lo trasforma ad analogico) per trasmetterlo.
+S/P e P/S, per trasformare il segnale da seriale a parallelo e viceversa.\\
+
+Le serie / parallelo dividono il flusso di dati (che hanno un bit rate alto) in più flussi di dati (con bit rate più basso) 
+che possono essere trasmessi su N sottocanali ortogonali, quindi i vari flussi divisi avranno un bit rate di $\frac R N$, e poi alla fine li ricombino in seriale.\\
+Le sottoportante le scelgo con frequenza $\frac 1 T$ perchè è l'inverso del tempo di simbolo.
+
+Tornato da parallelo a seriale aggiungo un prefisso ciclico. Poi nella trasmissione devo fare la modulazione, quindi moltiplico per una portante, e poi trasmetto.\\
+In ricezione è uguale ma prima devo demodulare, quindi moltiplico per la portante, poi tolgo il prefisso ciclico, poi faccio S/P, poi la FFT per 
+trasformare dal dominio del tempo al dominio della frequenza, e poi faccio il parallelo a seriale per ricombinare i flussi di dati.\\
+
+\paragraph{Prefisso ciclico}
+Sto trasmettendo il segnale come flusso di bit, a causa della distorsione, questi bit si possono sovrapporre, causando l'interferenza intersimbolica, 
+OFDM ha pensato che invece d mettere uno spazio vuoto tra un simbolo e l'altro, metto una copia del simbolo precedente (una parte del simbolo), 
+in questo modo se c'è interferenza intersimbolica, il simbolo precedente è uguale a quello che sta arrivando, quindi non c'è interferenza, 
+e posso ricostruire il segnale originale.\\
+
+Più lungo è il prefisso ciclico, più è probabile che riesca a eliminare l'interferenza intersimbolica, ma più è lungo il tempo di simbolo, quindi
+più è bassa l'efficienza spettrale, quindi c'è un tradeoff tra la lunghezza del prefisso ciclico e l'efficienza spettrale. \\%daje
+
+Questo mi serve nei canali wireless per disperdere il multipath fading, nella fibra ottica per la dispersione cromatica, 
+e in generale per qualsiasi canale che introduce distorsione.\\
+
+\subsection{Schema del trasmettitore OFDM}
+Il segnale di partenza lo divido in più flussi con convertitore S/P, in modo che ogni flusso abbia un Bit rate che è il bit rate di partenza diviso 
+per il numero di flussi, creo una costellazione, ovvero 4 simboli e ogni simbolo rappresenta 2 bit (se ho 16 simboli ogni simbolo rappresenta 4 bit), 
+OFDM poi fa il FFT per trasformare dal dominio del tempo al dominio della frequenza, poi P/S, poi aggiungo il prefisso ciclico, poi DAC,  
+poi moltiplico per la portante (parte reale usa coseno, parte immaginaria usa coseno), e poi trasmetto.\\
+
+In ricezione, prima moltiplico per la portante, lo filtro quindi tolgo la portante (rimetto in banda base), poi ADC, poi tolgo il prefisso ciclico, 
+poi S/P, poi faccio la FFT per trasformare dal dominio del tempo al dominio della frequenza, poi faccio il parallelo a seriale per ricombinare i flussi di dati, 
+e poi decodifico i simboli per ottenere i bit.\\
+
+\subsection{Prestaziomi dell'OFDM}
+PRO:
+\begin{itemize}
+    \item Robustezza rispetto all'interferenza intercanale, all'interferenza intersimbolica e al multipath fading, 
+    grazie alla divisione del canale in sottocanali ortogonali e all'uso del prefisso ciclico.
+    \item Efficienza spettrale elevata, grazie alla possibilità di trasmettere dati a velocità più elevate utilizzando la stessa banda.
+    \item Permette formati di modulazione avanzati
+    \item Implementazione efficiente, grazie all'uso della FFT per la modulazione e demodulazione dei sottocanali.
+    \item Bassa sensibilità agli errori di sincronizzazione, grazie alla divisione del canale in sottocanali ortogonali e all'uso del prefisso ciclico.
+    \item Processamento elettronico del segnale
+\end{itemize}
+CONTRO: 
+\begin{itemize}
+    \item Sensibile all'effetto doppler
+    \item Sensibile ai problemi di sincronizzazione in frequenza
+    \item Altro peak-to-average power ratio (PAPR), che può causare problemi di amplificazione del segnale e ridurre l'efficienza energetica del sistema.
+    \item Perdita di efficienza dovuta all'inserimento del ciclo prefisso, che riduce la quantità di dati trasmessi per unità di tempo.
+\end{itemize}
+
+\section{Complementary Cumulative Distribution Function - CCDF}
+La Complementary Cumulative Distribution Function (CCDF) è una funzione che descrive la probabilità che una variabile casuale superi un certo valore, 
+ed è spesso utilizzata per analizzare il Peak-to-Average Power Ratio (PAPR) nei sistemi di comunicazione, come OFDM, per valutare la probabilità che 
+il PAPR superi un certo livello, aiutando a progettare sistemi più efficienti e robusti contro le distorsioni causate da picchi di potenza elevati.\\
+
+Peak to Average Power Ratio (PAPR): misura per quanto tempo il segnale che devo trasmettere supera il valore medio. 
+CCDF è la probabilità che il PAPR superi un certo livello, ad esempio se voglio sapere la probabilità che il PAPR superi 10 dB, guardo la CCDF a 10 dB.\\
+
+Il fatto che la dinamica del mio segnale è così ambia è un problema, si possono creare effetti non lineare, perché la potenza è troppo elevata e la risposta 
+della fibra ottica non è lineare.\\
+
+Questa tecnica la usiamo nel wi fi, in ottica e nei sistemi mobili.
+
+\section{Discrete Multi Tone Modulation - DMT}
+E' l'OFDM in banda banse e viene utilizzato nell'ADSL.
+Nel 1960 abbiamo avuto i primi sistemi in rame, funzionava con un sistema analagico e quelle
+rete di chiamavano POTS (Plain Old Telephone Service), si chiamavano old proprio perchè ora 
+non esistono più, erano reti di comunicazione analogiche, e quindi non erano digitali, e quindi non potevano trasmettere dati, ma solo voce.\\
+
+Il segnale voce era trasformato in segnale elettrico e trasmesso attraverso il filo di rame, e poi in ricezione veniva trasformato di nuovo in segnale acustico.\\
+
+I primi 4 kHz non li tocchiamo (sono il segnale voce), dividiamo in sottoportanti la banda restante.
+
+ADSL (Asymmetric Digital Subscriber Line) è una tecnologia di comunicazione che utilizza le linee telefoniche in rame 
+per trasmettere dati a velocità elevate, e DMT è la tecnica di modulazione utilizzata in ADSL per dividere la banda 
+disponibile in più sottocanali, ognuno dei quali trasmette una porzione del segnale complessivo, migliorando l'efficienza spettrale e l
+a resistenza alle interferenze e alla distorsione del canale.\\
+
+Considero 512 sottoportanti, ognuna con una banda di 4.3125 kHz, e ogni sottoportante trasmette una porzione del segnale complessivo, 
+quindi se ho 512 sottoportanti, posso trasmettere 512 simboli contemporaneamente, e quindi aumentare la velocità di trasmissione.\\
+
+Applico a tutti questi i simboli la trasformata di fourier, e poi li trasmetto, in ricezione faccio l'operazione inversa, 
+quindi faccio la trasformata di fourier inversa, per trasformare dal dominio della frequenza al dominio del tempo, 
+e poi decodifico i simboli per ottenere i bit.\\
+
+Bit loading: il sistema misura i dati in trasmissione se c'è rumore o interferenza (che chiamiamo diafonia), 
+e diminuisco il numero di bit che trasmetto (uso Shannon). Più c'è rumore, meno bit trasmetto, e viceversa.\\
+
+Poi applico il QAM (Quadrature Amplitude Modulation) per modulare i simboli, poi trasformata di Fourier, poi +CP e poi DAC.\\
+
+VDSL2 è quella che uso se a casa mia non arriva la fibra. Il tratto di rame deve essere più corto possibile, 
+più è lungo più c'è il rumore, quindi più è basso il bit rate, e più è corto più è alto il bit rate.\\
+
+I sistemi in banda base sono quelli che viaggiano in rame. 

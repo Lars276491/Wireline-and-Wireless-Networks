@@ -1,0 +1,556 @@
+\section{Sistemi Wireless vs Wireline}
+
+Vantaggi Wireline:
+\begin{itemize}
+    \item Maggiore velocità di trasmissione
+    \item Maggiore affidabilità e stabilità
+    \item Sicurezza più elevata contro le intercettazioni
+\end{itemize}
+Svantggi Wireline:
+\begin{itemize}
+    \item Limitata mobilità per i dispositivi
+    \item Infrastruttura fissa e costosa da installare
+\end{itemize}
+Vantaggi Wireless:
+\begin{itemize}
+    \item Maggiore mobilità e flessibilità
+    \item Scalabilità più semplice per nuovi dispositivi
+\end{itemize}
+Svantaggi Wireless:
+\begin{itemize}
+    \item Suscetibilià a interferenze e perdite di segnale
+    \item Maggiore rischio di sicurezza e intercettazioni
+    \item Latenza e variabilità della velocità di trasmissione
+\end{itemize}
+
+\section{Cavi in rame e ottici}
+I cavi in rame studiamo il doppino telefonico, che è una coppia di fili intrecciato, 
+Cavo ethernet, che sono 4 coppie di fili intrecciati, e il cavo coassiale, che è un filo centrale circondato da un isolante e una schermatura.
+I cavi in fibra ottica invece utilizzano la luce per trasmettere i dati, e sono composti da un nucleo di vetro o plastica circondato da un rivestimento riflettente e una guaina protettiva.\\
+
+Nella fibra ottica (che è un vetro) non ci viaggiano elettroni ma impulsi luminosi, ci sarà una componente
+che converte da elettrico a luminoso.
+
+\subsection{Doppino di Rame}
+E' composto da due conduttori di rame (di diametri leggermente diversi) intrecciati tra loro, questo intreccio si chiama binatura, 
+e ogni filo di rame ha una guaina isolante. La binatura serve a ridurre le interferenze elettromagnetiche, e permette di trasmettere dati a velocità fino a 100 Mbps su distanze fino a 100 metri.
+
+A riposo sul filo c'è ugualmente una differenza di potenziale costante. Sul doppino telefonico viaggia
+il POTS, l'ISDN, lADSL, VDSL, e G.Fast.\\
+
+Per prima cosa si è passati dal POTS (Plain Old Telephone Service) all'ISDN (Integrated Servuce Digital Network), poi ADSL con 256 sottoportanti e modulazione QAM.
+Con VDSL si è arrivati a 4096 sottoportanti e modulazione QAM-256, e infine con G.Fast si è arrivati a 10624 sottoportanti e modulazione QAM-4096, con velocità fino a 1 Gbps su distanze fino a 100 metri.\\
+
+La tecnica del G Fast, che ha permesso di estendere la banda del rame, ha permesso di estendere fino a 212 MHz.
+
+Il G Fast utilizza una tecnica chiamata vectoring, che consiste nell'utilizzare un algoritmo di cancellazione del rumore per ridurre 
+le interferenze tra i cavi, e permette di aumentare la velocità di trasmissione su distanze più lunghe.\\
+
+Utilizza il DFT-Spread OFDM, che è una tecnica di modulazione che combina la modulazione OFDM con la trasformata discreta di Fourier (DFT) (la applica due volte), e permette di ridurre 
+l'effetto del fading e migliorare la resistenza alle interferenze.\\
+
+Quando si hanno più doppini ritorti è importante che la twistatura dei fili sia diversa tra i cavi, per evitare interferenze tra di essi (evitano l'effetto di diafonia).\\
+
+Tecnica di trasmissione differenziale: si trasmette il segnale su entrambi i fili del doppino, e si utilizza la differenza di potenziale tra i due fili per trasmettere i dati, 
+questo permette di ridurre le interferenze elettromagnetiche e migliorare la qualità del segnale.\\
+
+Il connettore del doppino telefonico è il connettore RJ11, che ha 4 o 6 pin, e viene utilizzato per collegare i telefoni alla rete telefonica.\\
+Il RJ10 è quello che connette i telefoni alla rete interna, e ha 4 pin.\\
+
+\subsection{Cavo Ethernet}
+Il cavo Ethernet è composto da 4 coppie di fili intrecciati, e viene utilizzato per collegare i dispositivi alla rete locale (LAN). 
+Esistono diverse categorie di cavi Ethernet, che si differenziano per la velocità di trasmissione e la qualità del segnale.\\
+
+Ci sono i cavi standard che si chiamano Unshielded Twisted Pair (UTP), che sono i più comuni, e i cavi Shielded Twisted Pair (STP), che hanno una schermatura aggiuntiva per ridurre le interferenze elettromagnetiche.\\
+I Foiled Twisted Pair (FTP) hanno una schermatura globale, e i Screened Twisted Pair (ScTP) ogni coppia (doppino) viene schermato.\\
+
+RJ-45 è il connettore standard per i cavi Ethernet, e ha 8 pin, e viene utilizzato per collegare i dispositivi alla rete locale (LAN).\\
+
+Due modi per connetterli: cross e patch.
+Quando faccio una connessione diretta è patch, mentre uso cross se devo connettere pc con pc o switch ethernet con altro switch ethernet.\\
+
+Vantaggi:
+\begin{itemize}
+    \item Alta Affidabilità e stabilità
+    \item Standard Universale
+    \item Supporto PoE (Power over Ethernet) per alimentare dispositivi
+    \item Costo contenuto per distanze fino a 100 metri
+    \item Ampia compatibilità con dispositivi di rete
+\end{itemize}
+
+Svantaggi:
+\begin{itemize}
+    \item Limitato a 100 metri senza ripetitori
+    \item Suscettibile a interferenze elettromagnetiche in ambienti rumorosi
+    \item velocità elevate richiedono Cat 6A o superiore
+\end{itemize}
+
+\subsection{Cavo Coassiale}
+Il cavo coassiale è composto da un filo conduttore di rame (anima) e un dielettrico (polietilene) garantisce 
+l'isolamento tra il centro del conduttore e uno schermo di metallo intrecciato (maglia).
+
+Le distanze sono limitate perché il segnale si attenua, e la velocità di trasmissione dipende dalla qualità del cavo e dalla distanza, ma può raggiungere fino a 10 Gbps su distanze fino a 100 metri.\\
+Noi li usiamo per la televisione via cavo, e per la connessione a Internet tramite modem via cavo.\\
+
+\section{Spettro elettromagnetico}
+Lambda per convenzione è la lunghezza d'onda (distanza tra un picco e un altro), quando un campo magnetico si propaga coper
+uno spazio e la distanza tra un picco e l'altro è la lunghezza d'onda, e la frequenza è il numero di cicli al secondo (Hz).\\
+
+Si propaga con una velocità c che è la velocità della luce, e $c = \lambda * f.$\\
+Distinguiamo i campi elettromagnetici in base alla frequenza, e abbiamo le onde radio (fino a 300 GHz, frequenze basse), le microonde (da 300 MHz a 300 GHz), 
+l'infrarosso (da 300 GHz a 400 THz) le lunghezze onda che utilizziamo nella fibra ottica, la luce visibile (da 400 THz a 800 THz), 
+l'ultravioletto (da 800 THz a 30 PHz), i raggi X (da 30 PHz a 30 EHz) e i raggi gamma (oltre 30 EHz).\\
+
+Utilizziamo le micro onde per le comunicazioni wireless, e le onde radio per le comunicazioni a lunga distanza.\\
+
+\subsection{Proprietà della luce}
+Riflessione: quando un'onda elettromagnetica colpisce una superficie, parte dell'energia viene riflessa, e la quantità di energia riflessa dipende dalle proprietà della superficie e dall'angolo di incidenza.\\
+Rifrazione: quando un'onda elettromagnetica passa da un mezzo a un altro, la sua velocità e direzione cambiano a causa della differenza di indice di rifrazione tra i due mezzi.\\
+Diffrazione: quando un'onda elettromagnetica incontra un ostacolo o una fessura, si piega e si diffonde intorno ad esso, e la quantità di diffrazione dipende dalla lunghezza d'onda e dalle dimensioni dell'ostacolo o della fessura.\\
+Diffusione (Scattering): quando un'onda elettromagnetica interagisce con particelle o irregolarità nell'ambiente, viene dispersa in diverse direzioni, e la quantità di diffusione dipende dalle proprietà delle particelle e dalla lunghezza d'onda dell'onda elettromagnetica.\\
+Polarizzazione: la direzione del campo elettrico di un'onda elettromagnetica può essere orientata in diverse direzioni, e la polarizzazione può essere lineare, circolare o ellittica.\\
+Interferenza: quando due o più onde elettromagnetiche si sovrappongono, possono interferire costruttivamente (aumentando l'ampiezza) o distruttivamente (riducendo l'ampiezza), e la quantità di interferenza dipende dalle fasi relative delle onde.\\
+\section{Fibra ottica}
+
+Dati sono trasmessi come impulsi di luce, e la fibra ottica è composta da un nucleo di vetro o plastica circondato da un rivestimento riflettente e una guaina protettiva.\\
+La rete telefonica Plain Old Telephone Service (POTS) è stata la prima tecnologia di comunicazione a utilizzare la fibra ottica, e ha permesso di trasmettere dati a velocità fino a 1
+Gbps su distanze fino a 100 km.\\
+
+Negli anni 90 sono nati i modem, prendevano il segnale digitale e lo rendevano analogico per poterlo trasmettere sulla rete telefonica, e poi lo riconvertivano in digitale all'arrivo.\\
+Successivamente ISDN ha permesso di trasmettere dati digitali direttamente sulla rete telefonica, e ha permesso di raggiungere velocità fino a 128 Kbps.\\
+
+I sistemi su rame è punto punto, non hanno inventato niente per far accedere più persone sullo stesso doppino, perché all'epoca c'era tanto rame e meno persone da dover connettere. 
+Rete parte dalla casa del cliente e va all'armadio di distribuzione, e poi arriva alla centrale telefonica, e da lì va alla rete di trasporto.\\
+
+C'è un sistema di cavi che poi si separano per raggiungere le case dei clienti.\\
+Come operatore un sistema punto punto è difficile e quindi hanno inventato il sistema fibra ottica, che è un sistema punto multipunto, e permette di condividere la fibra ottica tra più clienti.
+Le centrali venivano chiamate centrali di linea, e ora si chiamano armadi di distribuzione, e sono più vicine ai clienti, e permettono di condividere la fibra ottica tra più clienti.\\
+
+\subsection{Protocolli di trasmissione}
+\paragraph{ADSL - Asymmetric Digital Subscriber Line}
+E' una tecnologia di trasmissione dati che utilizza la rete telefonica in rame per fornire connessioni a banda larga.
+Il primo ADSL ha il doppino telefonico con una banda 1,1 MHz, però per trasmettere non possiamo farlo con cifre elevate, quindi suddividiamo la banda in sottocanali. \\
+
+La voce era il primo bin, poi dovevo filtrarla quindi i 4 bin erano vuoti, poi (quelli verdi) upstream, e quelli rossi downstream.\\
+
+Nel rame più aumento il cammino più aumento il cross talk, e quindi più aumenta il rumore, e più diminuisce la velocità di trasmissione.\\
+
+Su ogni sottocanale posso trasmettere dei simboli (non solo 0 e 1) se ho un SNR sufficientemente alto, posso trasmettere su ogni sottocanale un numero di bit che dipende dal SNR, e quindi 
+posso aumentare la velocità di trasmissione.\\
+
+Posso caricare su ogni sottoportante un massimo di 15 bit, ma in media non si superano 8-10 bit. Siccome ogni sottoportante ha una larghezza di 4.3 kHz, l'inverso della larghezza della sottoportante 
+è il tempo di simbolo, ovvero 0.23 ms, poi aggiungo un prefisso ciclico di 0.03 ms, e quindi il tempo totale di simbolo è di 0.26 ms, 
+e quindi la velocità di trasmissione è di 1/0.26 ms = 3.85 k simboli al secondo (approssimiamo a 4Kbaund). Se ogni sottoportante trasmette più simboli (più bit contemporaneamente)
+posso aumentare la velocità di trasmissione, e quindi posso raggiungere velocità fino a 24 Mbps in downstream e 1.4 Mbps in upstream.\\
+
+Con ADSL2+ si è arrivati a 2.2 MHz di banda, e quindi a velocità fino a 24 Mbps in downstream e 1.4 Mbps in upstream su distanze fino a 1.5 km.\\
+
+DSLAM (Digital Subscriber Line Access Multiplexer) è un dispositivo che si trova nella centrale telefonica, e permette di aggregare le connessioni ADSL dei clienti e di 
+collegarle alla rete di trasporto.\\
+
+Tutta la rete fino ai cabinet di distribuzione ora è in fibra ottica, e poi dal cabinet di distribuzione alla casa del cliente è in rame, e questo sistema si chiama Fiber to the Cabinet (FTTC).
+In genere si usa o 17a (banda rame è 17MHz) o 35b (banda rame è 35MHz), quindi riusciamo a dare banda fino a 300 Mbps in downstream e 100 Mbps in upstream su distanze fino a 500 metri.\\
+
+I sistemi attuali sono Fiber to the Home (FTTH), dove la fibra ottica arriva direttamente a casa del cliente, e permette di raggiungere velocità fino a 1 Gbps in downstream e 500 Mbps in upstream su distanze fino a 20 km.\\
+Il G.fast estende le prestazione della fibra usando l'ultimo tratto in rame.
+
+\paragraph{Spettro elettromagnetico}
+Lavoriamo con la banda dello spettro elettromagnetico che non è visibile, lavoriamo con il Near Infrared. Mentre le radiofrequenze sono utilizzate per le comunicazioni wireless, e le microonde 
+per le comunicazioni a lunga distanza. Con il 5G usiamo le frequenze che prima erano utilizzate per la televisione (onde radio).
+Quindi per wi fi e bluetooth usiamo le frequenze delle microonde, e per la fibra ottica usiamo le frequenze del Near Infrared.\\
+
+\paragraph{Come è costituita la Fibra Ottica}
+E' composta da un core (nucleo) di diamentro 9 micron (standard) o 50 micron, e da un cladding (rivestimento) di diametro 125 micron, e da una guaina protettiva.\\
+Rifressione totale, è il fenomeno che permette alla luce di rimanere confinata all'interno del core, e si verifica quando la luce colpisce l'interfaccia tra il core e il cladding con 
+un angolo maggiore dell'angolo critico.\\ 
+La luce si propaga all'interno del core grazie alla riflessione totale. Quindi all'interno del core la luce si propaga, se la fibra è un po' piegata, subisce la riflessione totale (agisce quasi come specchio),
+ho due strati di vetro con indice di rifrazione diverso (core ng, cladding n1). E' necessario che la luce stia in un mezzo con indice di rifrazione più alto rispetto al mezzo circostante, 
+quindi ng>n1, e questo permette alla luce di rimanere confinata all'interno del core.\\
+
+L'angolo critico è l'angolo minimo di incidenza per cui si verifica la riflessione totale, e dipende dagli indici di rifrazione del core e del cladding, e può essere calcolato utilizzando 
+la legge di Snell.\\
+
+Se la potenza luminosa si perde nel mantello (cladding) o nella guaina protettiva, si verifica un'attenuazione del segnale, e la quantità di attenuazione dipende dalle proprietà del materiale 
+e dalla lunghezza d'onda della luce.\\
+
+Apertura numerica (NA) è una misura della capacità di una fibra ottica di raccogliere e trasmettere la luce, e dipende dagli indici di rifrazione del core e del cladding, e può essere calcolata 
+utilizzando la formula $NA = \sqrt{ng^2 - n1^2}$.\\
+
+\paragraph{Modalità di propagazione}
+Si dicono fibre multimodali quelle fibre ottiche che hanno un core di diametro maggiore di 50 micron, e permettono alla luce di propagarsi in più modalità (percorsi) all'interno del core, e sono
+utilizzate principalmente per le comunicazioni a breve distanza (fino a 2 km)\\
+Si dicono fibre monomodali quelle fibre ottiche che hanno un core di diametro di 9 micron, e permettono alla luce di propagarsi in una sola modalità (percorso) all'interno del core, 
+e sono utilizzate principalmente per le comunicazioni a lunga distanza (oltre 2 km).\\
+
+Perché usare fibra multimodale?
+La fibra multimodo soffre dell'effetto dispersione intermodale, ma viene usata nelle data center. Se all'interno della fibra si propagano più modalità, ci sarà un modo che si propaga in modo lineare, 
+altri seguendo determinati angoli, quindi la luce in ingresso se eccita più modi si allarga, se la fibra è lunga la luce si allarga così tanto che non riesco più a distinguere i simboli, 
+e quindi la velocità di trasmissione diminuisce. Questo effetto si chiama allargamento dell'impulso e può portare alla ISI (Inter Symbol Interference). L'allargamento dell'impulso dipende dalla 
+lunghezza della fibra (più lunga fibra più basso bit rate per dispersione intermodale). Un vantaggio della fibra multimodale è che è più economica da produrre e da installare rispetto alla fibra 
+monomodale, e può essere utilizzata per le comunicazioni a breve distanza, come ad esempio all'interno di un edificio o di un campus universitario.\\
+
+Ci sono degli standard per le fibre multimodali, come ad esempio OM1, OM2, OM3 e OM4, che si differenziano per la loro capacità di trasmettere dati a diverse velocità e distanze.\\
+
+Quella monomodale invece è utilizzata per le comunicazioni a lunga distanza, come ad esempio tra città o tra continenti, e permette di raggiungere velocità di trasmissione molto elevate 
+(fino a 100 Gbps) su distanze fino a 100 km, ma è più costosa da produrre e da installare rispetto alla fibra multimodale.\\
+Ha l'effetto chiamato dispersione cromatica, che è causato dalla differenza di velocità di propagazione della luce a diverse lunghezze d'onda, e può portare alla ISI (Inter Symbol Interference).\\
+Più aumento la lunghezza della fibra, più gli impulsi arrivano con tempi diversi, e quindi si sovrappongono, e quindi non riesco più a distinguere i simboli, e quindi la velocità di trasmissione diminuisce.\\
+
+Anche nelle fibre multimodali c'è la dispersione cromatica, ma è meno impattante rispetto alla dispersione intermodale, quindi non si nota troppo.\\
+
+Poichè la dispersione cromatica è un effetto lineare noi riusciamo a compensarla, e quindi possiamo raggiungere velocità di trasmissione più elevate su distanze più lunghe. Per farlo 
+utilizziamo dei dispositivi chiamati compensatori di dispersione, che possono essere basati su fibre ottiche speciali o su dispositivi a cristalli liquidi, e permettono di compensare la dispersione cromatica
+e migliorare la qualità del segnale.\\
+
+ISI per la dispersione intermodale e cromatica.\\
+
+\paragraph{Polarization Division Multiplexing - PMD}
+All'interno della singola fibra mando due polarizzazioni diverse (ortogonali), che riesco a separare con un Polarization Beam Splitter. Si usa questa caratteristica nei collegamenti sottomarini.
+
+\paragraph{Attenuazione in una fibra ottica}
+La fibra attenua di 0.2 dB/km a 1550 nm, quindi poco. Quando i fotoni si propagano all'interno della fibra, possono imbattersi in impurità o difetti nel materiale, causando così 
+la loro dispersione, oppure se la fibra è piegata troppo, la luce può fuoriuscire dal core, causando così un'ulteriore attenuazione del segnale.\\
+
+Le fibre standard attenuano di meno in alcune bande di lunghezza d'onda, quindi si è lavorato in quelle bande. 
+Le finestre sono 850 nm, 1300 nm e 1550 nm, e sono state scelte perché in queste bande l'attenuazione è minima, e permettono di raggiungere velocità di trasmissione più elevate su distanze più 
+lunghe.\\
+La prima finestra (850 nm) non è tanto bassa in attenuazione (2.5 dB/km), e quindi è utilizzata principalmente per le fibre multimodali, mentre la seconda (1300 nm ovvero 1.3 micron) e la terza (1550 nm ovvero 1.55 micron) sono utilizzate 
+principalmente per le fibre monomodali.\\
+
+L'attenuazione in fibra è molto bassa rispetto ai cavi in rame, e permette di trasmettere dati a velocità elevate su distanze più lunghe senza la necessità di amplificatori o ripetitori.\\
+
+Quando mando segnale da casa a centrale telefonica uso una banda di 1300 nm (seconda finestra), mentre da centrale a casa 1550 nm (terza finestra), perché in questo modo posso sfruttare al meglio le caratteristiche 
+della fibra ottica e raggiungere velocità di trasmissione più elevate su distanze più lunghe.\\
+\paragraph{Rumore in una fibra ottica}
+Il rumore non è un porblema della fibra ottica, ma è un problema dei dispositivi di trasmissione e ricezione.
+Viene introdotto in amplificazione o ricezione, quindi tutte le volte il segnale non è più nel dominio ottico (in realtà ci sono amplificatori ottici) viene introdotto rumore.\\
+
+\paragraph{Connettori}
+I connettori per le fibre ottiche sono utilizzati per collegare i cavi in fibra ottica ai dispositivi di trasmissione e ricezione, e sono progettati per garantire una connessione stabile e affidabile.\\
+A casa quando portano la fibra fanno un giunto a fusione, devono necessariamente fare una connessione permanente, così continuo (saldo) la fibra. La fibra è di vetro quindi basta riscaldare
+un po' la fibra e farla fondere, e poi allineare i due pezzi di fibra in modo che la luce possa passare attraverso di essi senza perdite significative.\\
+
+\paragraph{Wavelenght Division Multiplexing - WDM}
+Creo tanti flussi di segnale a diverse lunghezze donda, e li sommo insieme, e poi alla ricezione li separo con un filtro ottico.\\
+E' una tecnica di multiplexing che consente di trasmettere più segnali ottici per aumentare la banda disponibile su una singola fibra ottica, e viene utilizzata principalmente nelle comunicazioni a lunga distanza, 
+come ad esempio tra città o tra continenti.\\
+
+Nei data center uso 4 lunghezze d'onda in prima finestra chiamata short wavelength division multiplexing (SWDM), e posso raggiungere velocità di trasmissione fino a 100 Gbps su distanze fino a 100 metri.
+Nei colleghi Fiber to the Home (FTTH) uso 4 lunghezze d'onda in seconda finestra chiamata coarse wavelength division multiplexing (CWDM), e posso raggiungere velocità di trasmissione fino a 10 Gbps su distanze fino a 20 km.\\
+ONU (Optical Network Unit) è un dispositivo che si trova presso il cliente, e permette di convertire il segnale ottico in segnale elettrico, e viceversa, e di collegare i dispositivi del cliente alla rete di trasporto.\\
+
+Nelle reti dorsali dove usiamo il protocollo OTN (Optical Transport Network) separo le lunghezze d'onda usando demultiplexer e le amplifico usando amplificatori ottici, e poi le riassemblo usando multiplexer.
+Mi conviene mantenere il segnale ottico il più possibile e non convertirlo in elettrico, perché ogni volta che lo converto introduco rumore, e quindi mantengo il segnale ottico il più possibile per mantenere la qualità del segnale.\\
+
+\paragraph{Dense Wavelength Division Multiplexing - DWDM}
+Hanno inventato gli amplificatori ottici che mantengono il segnale ottico, amplificano il segnale e tutte le lunghezze d'onda che sto trasmettendo. 
+Quindi ho bisogno per ogni lunghezza d'onda un laser, poi un multiplexer per sommare tutte le lunghezze d'onda, e poi un amplificatore ottico per amplificare il segnale, 
+e poi un demultiplexer per separare le lunghezze d'onda alla ricezione.\\
+
+\subsection{Infrastrutture in fibra ottica}
+Usiamo la fibra ottica ovunque, all'interno dei data center (Storage Area Network - SAN), nelle reti Backhaul, nelle reti Fiber to the Home (FTTH) e nelle reti sottomarine Backbone(Submarine Cable Network).\\
+
+\paragraph{Data Center}
+
+All'interno dei data center usiamo delle interconnessioni in fibra ottica multidomale per collegare i server tra di loro, e permettere la trasmissione di grandi quantità di dati a velocità elevate.
+Bisogna creare connessioni anche da 50 G per ogni singolo server, e quindi si utilizzano cavi in fibra ottica multimodale con connettori LC (Lucent Connector) o MPO (Multi-fiber Push On).\\
+Usiamo LED o VCSEL (Vertical Cavity Surface Emitting Laser) come sorgenti di luce, e fotodiodi come rivelatori di luce, e utilizziamo protocolli di trasmissione come ad esempio Ethernet o InfiniBand per gestire la comunicazione tra i server.\\
+
+\paragraph{Reti Backhaul}
+Ora con il 5G abbiamo le AAU (Active Antenna Unit) che sono le antenne che si trovano sui tetti, e che permettono di trasmettere i dati tra i dispositivi mobili e la rete di trasporto, 
+e sono collegate alla rete di trasporto tramite cavi in fibra ottica.\\
+
+C'è un protoccolo che converte il segnale digitale per trasmetterlo in fibra ottica, e si chiama CPRI (Common Public Radio Interface), e permette di trasmettere dati a velocità fino a 10 Gbps su distanze fino a 20 km.\\
+
+I dati che vengono dalla base transceiver station BTS poi vengono divisi in più flussi di dati, e poi vengono trasmessi in fibra ottica fino alla centrale telefonica, e poi vengono aggregati e trasmessi alla rete di trasporto.\\
+
+\paragraph{Dorsali e Sottomarine}
+
+Le reti dorsali sono le reti che collegano le città tra di loro, e sono costituite da cavi in fibra ottica che permettono di trasmettere dati a velocità elevate su distanze più lunghe.\\
+Le reti sottomarine sono le reti che collegano i continenti tra di loro, e sono costituite da cavi in fibra ottica che permettono di trasmettere dati a velocità elevate su distanze più lunghe, e sono progettate per resistere alle condizioni ambientali estreme del fondo oceanico.\\
+
+Per quelli sottomarini gli amplificatori sono ottici ma hanno bisogno di energia elettrica (di differenza di potenziale) quindi oltre al segnalpe viaggia anche l'energia elettrica, e quindi hanno bisogno di stazioni di alimentazione lungo il percorso per fornire energia agli amplificatori ottici.
+Il mare alla fibra (che è vetro) non dovrebbe dare problemi ma visto che ci sono altri disturbi come ad esempio le correnti marine, le vibrazioni, le variazioni di temperatura e gli animali è necessario utilizzare cavi in fibra ottica progettati per resistere a queste condizioni ambientali estreme.\\
+
+Nelle reti metropolitane le fibre si inseriscono scavando prima il condotto e poi vengono soffiate al loro interno.\\
+
+\subsection{Evoluzione delle reti in fibra ottica}
+
+\subsection{Collegamento in Fibra ottica}
+
+Quando si lavora ottico si lavora con un fotone, ma le informazioni provengono da elettrico quindi c'è la sorgente che converte da elettrico a ottico. 
+Il laser o led emette un fotone che viaggia all'interno della fibra ottica, e poi arriva al rivelatore che converte il segnale ottico in segnale elettrico, e permette di recuperare le informazioni trasmesse.\\
+
+Ho la mia sequenza di dati (bit) io la trasformo in una serie di impulsi elettrici che modula il laser, ovvero accende o spegne il laser, e quindi creo una sequenza di impulsi luminosi che viaggiano all'interno della fibra ottica, 
+e poi arrivano al rivelatore che converte il segnale ottico in segnale elettrico, e permette di recuperare le informazioni trasmesse.\\
+
+Filtro ottico è un dispositivo che permette di selezionare una specifica lunghezza d'onda della luce, e di bloccare le altre, così si elimina il rumore e si migliora la qualità del segnale.\\
+
+Come sorgente possiamo usare o i laser o i LED (non vengono usati spesso perché sono più costosi e meno efficienti, quindi non vanno bene per le comunicazioni in fibra ottica).
+Se accendo il laser trasmetto il bit 1, se lo spengo trasmetto il bit 0, e quindi creo una sequenza di impulsi luminosi che viaggiano all'interno della fibra ottica, e poi arrivano al rivelatore che converte il segnale ottico in segnale elettrico, e permette di recuperare le informazioni trasmesse.
+Questo tipo di modulazione si chiama On-Off Keying (OOK), ed è la forma più semplice di modulazione digitale, e viene utilizzata principalmente nelle comunicazioni in fibra ottica a bassa velocità.\\
+
+Se io voglio accendere un laser a una velocitàa di 10 miliardi al secondo non ci riesco, quindi ho bisogno di un dispositivo chiamato modulatore, che fa passare o meno la luce, sono chiamati
+modulatori esterni.\\
+
+\subsection{Sorgente della fibra ottica}
+La sorgente è un laser. Per parlare del laser bisogna spiegare cosa è una luce.\\
+E' una onda elettromagnetica che si propaga nel vuoto con la velocià della luce, ed è solo una parte dello spettro magnetico che va dai 400 nm (violetto) ai 700 nm (rosso).\\
+
+Plank aveva ipotizzato che la luce fosse composta da particelle chiamate fotoni, e che ogni fotone avesse un'energia quantizzata, ovvero che potesse assumere solo valori discreti di energia.
+Più sale la frequenza più sale l'energia del fotone, e quindi più è difficile da generare.\\
+
+Einstein ha dimostrato che la luce è composta da fotoni, e che ogni fotone ha un'energia quantizzata, e che la luce può essere emessa o assorbita solo in pacchetti discreti di energia, chiamati quanti.\\
+
+Il fotone è un onda elettromagnetica che si propaga nel vuoto con la velocità della luce, e ha un'energia quantizzata, che dipende dalla frequenza della luce, 
+e può essere calcolata utilizzando la formula $E = h\nu$, dove h è la costante di Planck e $\nu$ è la frequenza della luce.\\
+
+Come interagisce con la materia la luce, 3 modi:
+\begin{itemize}
+    \item Assorbimento: quando un fotone colpisce un atomo o una molecola, può essere assorbito, e l'energia del fotone viene trasferita all'atomo o alla molecola, 
+    e questo processo è chiamato assorbimento, e può essere utilizzato per generare luce coerente, come ad esempio nei laser.\\
+    \item Emissione spontanea: quando un atomo o una molecola assorbe energia, può emettere un fotone in modo casuale, e questo processo è chiamato emissione spontanea, 
+    e può essere utilizzato per generare luce incoerente, come ad esempio nei LED. LED sta per "Light Emitting Diode".\\
+    \item Emissione stimolata: quando un fotone colpisce un atomo o una molecola che è già eccitato, se è colpito da un altro fotone, può stimolare l'emissione di un altro fotone con la stessa frequenza, fase e direzione, 
+    e questo processo è chiamato emissione stimolata, e può essere utilizzato per generare luce coerente, come ad esempio nei laser. LASER sta per "Light Amplification by Stimulated Emission of Radiation".
+    Con il fatto che i fotoni emessi e quelli che li hanno stimolat sono identici, il laser è una sorgente di luce coerente, ovvero che ha una frequenza, fase e direzione ben definite, e permette di trasmettere dati a velocità elevate su distanze più lunghe.\\
+\end{itemize}
+
+Poichè il laser non ha niente in ingresso che lo stimoli, è necessario far in modo che la luce venga riflessa più volte all'interno del laser, in modo da stimolare l'emissione di più fotoni, e quindi creare un fascio di luce coerente.\\
+Il laser è costituito da un mezzo attivo, che è un materiale che può essere eccitato per emettere luce, e da una cavità ottica, che è un sistema
+di specchi che riflette la luce all'interno del laser, e permette di stimolare l'emissione di più fotoni.\\
+Il mezzo attivo può essere costituito da un gas, un liquido o un solido, e viene eccitato da una sorgente di energia, come ad esempio una scarica elettrica, una luce intensa o una reazione chimica, 
+e permette di generare luce coerente con una frequenza specifica.\\
+La cavità ottica è costituita da due specchi, uno dei quali è parzialmente trasparente (per permettere di trasmettere una parte della luce), e permette alla luce di essere riflessa più volte all'interno del laser, 
+e di stimolare l'emissione di più fotoni, e di creare un fascio di luce coerente con una frequenza specifica.\\
+
+\paragraph{LED e Laser a semiconduttore}
+
+Usiamo i Laser a semiconduttore perché costano poco. La corrente elettrica che attraversa il materiale semiconduttore, eccita gli elettroni, rendendo così il mezzo attivo.
+I semiconduttori si surriscaldano, e quindi è necessario utilizzare un sistema di raffreddamento per mantenere la temperatura del laser a un livello ottimale, e garantire così prestazioni stabili e affidabili.\\
+
+Nella fiber pigtail esce il laser.\\
+
+Il simbolo del LED è un diodo con due freccettine che indicano che emette luce. Una lacuna si può ricombinare con un elettrone, e quando lo fa emette un fotone, e quindi emette luce.
+Un elettrone decade dalla banda di conduzione alla banda di valenza, e quando lo fa emette un fotone, e quindi emette luce.\\
+La caratteristica di questo fotone è che l'energia del fotone è uguale alla differenza di energia tra la banda di conduzione e la banda di valenza, 
+e quindi la lunghezza d'onda della luce emessa dipende dal materiale semiconduttore utilizzato, e può essere calcolata utilizzando la formula $\lambda = \frac{hc}{E}$, 
+dove h è la costante di Planck, c è la velocità della luce e E è l'energia del fotone.\\
+
+Si può approfondire la storia del led blu.\\
+
+Nei LED l'emissione spontanea è dominante, e quindi la luce emessa è incoerente, mentre nei laser a semiconduttore l'emissione stimolata è dominante, 
+e quindi la luce emessa è coerente, e permette di trasmettere dati a velocità elevate su distanze più lunghe.\\
+Lo spettro di emissione dei LED è più ampio rispetto a quello dei laser a semiconduttore, e quindi i LED emettono luce con una gamma più ampia di lunghezze d'onda,
+mentre i laser a semiconduttore emettono luce con una lunghezza d'onda specifica, e quindi sono più adatti per le comunicazioni in fibra ottica.\\
+
+Il diodo laser ha le facce pulite in modo che agiscono come specchi, innietto dall'esterno cariche (quindi elettroni dalla regione P e neutroni dalla regione N) e quindi si crea una popolazione inversa, 
+e quindi si innesca l'emissione stimolata, e quindi si genera un fascio di luce coerente con una frequenza specifica.\\
+
+\paragraph{Tipi di Laser}
+ %vedere come funzionano
+\begin{itemize}
+    \item Laser Fabry Perot: è un tipo di laser a semiconduttore che utilizza una cavità ottica costituita da due specchi, uno dei quali è parzialmente trasparente, 
+    e permette di generare luce coerente con una frequenza specifica. Sono lo standard per le comunicazioni in fibra ottica a bassa velocità (fino a 1 Gbps) su distanze fino a 2 km.\\
+    \item Vertical Cavity Surface Emitting Laser (VCSEL): è un tipo di laser a semiconduttore che utilizza una cavità ottica verticale, e permette di generare luce coerente con una frequenza 
+    specifica, e viene utilizzato principalmente nelle comunicazioni in fibra ottica a breve distanza (fino a 300 metri) all'interno dei data center.\\
+    \item Distributed Feedback Laser (DFB): è un tipo di laser a semiconduttore che utilizza una cavità ottica costituita da un reticolo di diffrazione, e permette di generare luce coerente con una frequenza specifica,
+    e viene utilizzato principalmente nelle comunicazioni in fibra ottica a lunga distanza (oltre 2 km) e ad alta velocità (fino a 100 Gbps), quindi long-haul, metro ...\\
+    \item Distributed Bragg Reflector Laser (DBR): è un tipo di laser a semiconduttore che utilizza una cavità ottica costituita da un reticolo di diffrazione, e permette di generare luce coerente con una frequenza specifica,
+    e viene utilizzato principalmente nelle comunicazioni in fibra ottica a lunga distanza (oltre 2 km) e ad alta velocità (fino a 100 Gbps).\\
+\end{itemize}
+
+Gli DFB e DBR permettono di diminuire la dispersione cromatica e l'ISI.
+
+\paragraph{Modulazione diretta del Laser}
+
+Direct Modulater Laser - DML è una tecnica di modulazione in cui la corrente elettrica che attraversa il laser viene modulata direttamente per generare impulsi di luce, 
+e viene utilizzata principalmente nelle comunicazioni in fibra ottica a bassa velocità (fino a 1 Gbps) su distanze fino a 2 km.\\
+
+Il segnale di modulazione viene applicato direttamente a un laser tramite un driver che converte il flusso di dati (tensione) nella corrente di iniezione.
+
+Prima emissione spontanea, quando inizio a mettere più corrente rispetto alla corrente di soglia, inizio ad avere emissione stimolata, e quindi inizio a generare luce coerente 
+con una frequenza specifica, e quindi posso trasmettere dati a velocità elevate su distanze più lunghe.\\
+
+\paragraph{Modulazione esterna}
+External Modulator Laser - EML è una tecnica di modulazione in cui un modulatore esterno viene utilizzato per modulare la luce generata da un laser, e viene utilizzata principalmente nelle comunicazioni in fibra ottica a lunga distanza (oltre 2 km) e ad alta velocità (fino a 100 Gbps).\\
+
+\paragraph{Modulatori On Off Keying - OOK}
+
+Il vantaggio di questa modulazione è che prendo il segnale così come è e lo mando direttamente al diodo, l'informazione è codificata direttamente nella luce, e quindi è una tecnica di modulazione semplice e efficiente, e viene utilizzata principalmente nelle comunicazioni in fibra ottica a bassa velocità (fino a 1 Gbps) su distanze fino a 2 km.\\
+Il vantaggio è che è semplice e efficiente, ma il problema è che non posso raggiungere velocità di trasmissione elevate su distanze più lunghe, perché la modulazione diretta del laser introduce rumore e distorsione nel segnale, e quindi limita la qualità del segnale e la velocità di trasmissione.\\
+
+\paragraph{Modulatori coerenti}
+
+\textbf{Mach-Zehnder Modulator - MZM}\\
+Per modulare l'ampiezza e la fase di una  portante si usa un modulatore IQ. In questo caso due segnali in banda base modulano in ampiezza due portanti ortogonali (90 gradi di differenza di fase), e poi le sommo insieme, e quindi ottengo un segnale modulato in ampiezza e fase, e posso raggiungere velocità di trasmissione elevate su distanze più lunghe, perché la modulazione coerente permette di ridurre il rumore e la distorsione nel segnale, e quindi migliorare la qualità del segnale e la velocità di trasmissione.\\
+
+\paragraph{Sistema di trasmissione e ricezione coerenti}
+
+\subsection{Fotodiodi}
+Il fotodiodo è un dispositivo che converte la luce in corrente elettrica, e viene utilizzato principalmente nelle comunicazioni in fibra ottica per rilevare la luce trasmessa attraverso la fibra ottica, e convertire il segnale ottico in segnale elettrico, e permette di recuperare le informazioni trasmesse.\\
+Usa l'effetto fotoelettrico, che è il fenomeno per cui quando un fotone colpisce un materiale semiconduttore, può liberare un elettrone, e quindi generare una corrente elettrica, 
+e permette di convertire la luce in corrente elettrica.\\
+
+\paragraph{Fotodiodo PIN}
+Il fotodiodo PIN è un tipo di fotodiodo che utilizza una struttura a strati, costituita da una regione di tipo P, una regione di tipo N e una regione intrinseca (I) tra di esse,
+e permette di convertire la luce in corrente elettrica con una maggiore efficienza rispetto ai fotodiodi tradizionali, e viene utilizzato principalmente nelle comunicazioni in fibra
+ottica a bassa velocità (fino a 1 Gbps) su distanze fino a 2 km.\\
+
+\paragraph{Fotodiodo Avalanche - APD}
+Il fotodiodo Avalanche (APD) è un tipo di fotodiodo che mette in evidenza l'effetto valanga, che è un fenomeno per cui quando un fotone colpisce un materiale semiconduttore, 
+può liberare un elettrone, e questo elettrone può a sua volta liberare altri elettroni, creando così una valanga di elettroni, e permette di convertire la luce in corrente elettrica 
+con una maggiore sensibilità rispetto ai fotodiodi tradizionali, e viene utilizzato principalmente nelle comunicazioni in fibra ottica a lunga distanza (oltre 2 km) e ad alta 
+velocità (fino a 100 Gbps).\\
+
+\paragraph{Materiali per i fotodiodi}
+I fotodiodi possono essere realizzati con diversi materiali semiconduttori, come ad esempio il silicio (Si), il germanio (Ge) e l'arseniuro di gallio (GaAs), 
+e la scelta del materiale dipende dalle caratteristiche desiderate del fotodiodo, come ad esempio la sensibilità, la velocità di risposta e la lunghezza d'onda della luce da rilevare.\\
+
+\subsection{Amplificatori ottici}
+\paragraph{Erbium Doped Fiber Amplifier - EDFA}
+Nei collegamenti ottici spesso devo amplificare il segnale ottico, lo faccio quando devo fare le dorsali o submarini perché cerco di mantenere il dato nel dominio ottico il piú possibile.
+La categoria di amplificatori ottici più utilizzata è l'Erbium Doped Fiber Amplifier (EDFA), che utilizza una fibra ottica dopata con erbio (terra rara) come mezzo attivo, 
+e permette di amplificare il segnale ottico con una bassa attenuazione e un'alta efficienza.
+Una fibra ottica viene drogata con ioni Erbio ($Er^{3+}$) per amplificare la radiazione alle lunghezze d'onda in terza finestra ($\lambda = 1550 nm$).
+Prende energia dal laser di pompa e amplifica il segnale ottico che viaggia all'interno della fibra ottica, e permette di trasmettere dati a velocità elevate su distanze più 
+lunghe senza la necessità di convertire il segnale in elettrico.\\
+
+\paragraph{Amplificatori Raman}
+Gli amplificatori Raman utilizzano l'effetto Raman per amplificare il segnale ottico, e consistono in una fibra ottica in cui viene immessa una radiazione laser di pompa, 
+che interagisce con il segnale ottico da amplificare, e permette di amplificare il segnale ottico con una bassa attenuazione e un'alta efficienza.\\
+
+\paragraph{Semiconductor Optical Amplifier - SOA}
+Il Semiconductor Optical Amplifier (SOA) è un tipo di amplificatore ottico che utilizza un materiale semiconduttore come mezzo attivo, 
+e permette di amplificare il segnale ottico con una bassa attenuazione e un'alta efficienza.
+Il SOA ha una struttura simile a quella di un diodo laser, ma con trattamenti antiriflesso sulle facce per evitare l'auto-oscillazione, 
+e permette di amplificare il segnale ottico con una bassa attenuazione e un'alta efficienza.\\
+
+\paragraph{Planar lightwave circuits - PLC e Photonic Integrated Circuits - PIC}
+I Planar Lightwave Circuits (PLC) e i Photonic Integrated Circuits (PIC) sono dispositivi che integrano più componenti ottici su un unico substrato,
+e permettono di amplificare il segnale ottico con una bassa attenuazione e un'alta efficienza.
+\subsection{Switch ottici}
+
+\paragraph{Switch Micro Electro Mechanical System -MEMS}
+
+\paragraph{Thermo Optic - TO}
+\paragraph{Eletro Optic - EO}
+\paragraph{SOA}
+
+\paragraph{Optical Cross Connect - OXC}
+
+\section{Wireless}
+\subsection{Optical Wireless Communications - OWC}
+Sono sistemi di comunicazione che utilizzano la luce per trasmettere dati attraverso l'aria, e possono essere utilizzati in ambienti in cui le comunicazioni in fibra ottica non sono pratiche, come ad esempio in ambienti urbani densi o in ambienti interni.\\
+
+\paragraph{Visible Light Communication - VLC}
+La Visible Light Communication (VLC) è una tecnologia di comunicazione wireless che utilizza la luce visibile per trasmettere dati, e può essere utilizzata in ambienti interni, come ad esempio in uffici, case o negozi, per fornire connettività wireless ad alta velocità.\\
+Usiamo la luce del visibile perché prendiamo le lampadine a led e le accendiamo e spegniam o con tempi dell'ordine dei nani secondi (all'occhio umano sembra sempre accesa) ma in realtà stiamo trasmettendo un segnale che possiamo usare al posto del wi fi.\\
+Sono usati per esempio nei LED di un aereo. 
+
+Il LED bianco non esiste, è l'unione di LED blu rosso e verde che danno l'effetto del colore bianco.
+Ha lunghezze d'onda da 390 nm a 750 nm.
+\paragraph{Free Space Optical Communication - FSO}
+La Free Space Optical Communication (FSO) è una tecnologia di comunicazione wireless che utilizza la luce per trasmettere dati attraverso l'aria, e può essere utilizzata in ambienti esterni, come ad esempio tra edifici o tra città, per fornire connettività wireless ad alta velocità.\\
+Comunicazioni tra laser (fotodiodi) montati su edifici, quindi in caso di disastri è possibile ripristinare i collegamenti a volo in free space optical (è più difficile ricostruire l'impianto sotto terra che montare un laser su un edificio).\\
+Ha lunghezze d'onda da 750 nm a 1600 nm.
+\paragraph{Ultraviolet Communications - UVC}
+L'Ultraviolet Communications (UVC) è una tecnologia di comunicazione wireless che utilizza la luce ultravioletta per trasmettere dati, e può essere utilizzata in ambienti esterni, come ad esempio tra edifici o tra città, per fornire connettività wireless ad alta velocità.\\
+Viene usato anche quellpo infrarosso. 
+Ha lunghezze d'onda da 200 nm a 280 nm.
+
+\paragraph{Light Fidelity - LiFi}
+Il Light Fidelity (LiFi) è una tecnologia di comunicazione wireless che utilizza la luce per trasmettere dati, e può essere utilizzata in ambienti interni, come ad esempio in uffici, case o negozi, per fornire connettività wireless ad alta velocità.\\
+E' una tecnologia che utilizza la luce visibile per trasmettere dati, e può essere utilizzata in ambienti interni, come ad esempio in uffici, case o negozi, per fornire connettività wireless ad alta velocità.\\
+\paragraph{Infrared Communication - IRC}
+L'Infrared Communication (IRC) è una tecnologia di comunicazione wireless che utilizza la luce infrarossa per trasmettere dati, e può essere utilizzata in ambienti interni, come ad esempio in uffici, case o negozi, per fornire connettività wireless ad alta velocità.\\
+Viene usato anche quello ultravioleto.
+Ha lunghezze d'onda da 750 nm a 1600 nm.
+
+\paragraph{Mezzi}
+Il VLC usa LED o comunque sorgenti di luce visibile, e fotodiodi come rivelatori di luce, e utilizza protocolli di trasmissione come ad esempio Ethernet o InfiniBand per gestire la comunicazione tra i dispositivi.\\
+
+In OCC ho un insieme di LED o addirittura dei Display, ogni parte del display può inviare informazioni e posso riceverli con una o più camere. Quindi su uno schermo prendo una parte dello schermo e la accendo e spengo con tempi dell'ordine dei nanosecondi, e quindi posso trasmettere un segnale che posso ricevere con una o più camere, e quindi posso trasmettere dati a velocità elevate su distanze più lunghe.\\
+
+MIMO (Multiple Input Multiple Output) è una tecnica di comunicazione wireless che utilizza più antenne per trasmettere e ricevere dati, e può essere utilizzata per migliorare la qualità del segnale e aumentare la velocità di trasmissione nelle comunicazioni in fibra ottica.\\
+
+IRC ho un LED che trasmette luce infrarossa, e un fotodiodo che riceve la luce infrarossa, e utilizza protocolli di trasmissione come ad esempio Ethernet o InfiniBand per gestire la comunicazione tra i dispositivi.\\
+
+IN FSO ho un laser che trasmette luce, e un fotodiodo che riceve la luce, e utilizza protocolli di trasmissione come ad esempio Ethernet o InfiniBand per gestire la comunicazione tra i dispositivi.\\
+
+In UVC ho un LED che trasmette luce ultravioletta, e un fotodiodo che riceve la luce ultravioletta, e utilizza protocolli di trasmissione come ad esempio Ethernet o InfiniBand per gestire la comunicazione tra i dispositivi.\\
+
+Se io mando il LASER nello spazio libero dovrei preoccuparmi della sicurezza. L'occhio è sensibile alla luce visibile, ma se lavoriamo nell'infrared posso dare danni all'occhio senza che la persona se ne accorga. Se focalizzo la luce nell'infrarosso creo danni permanenti, posso rischiare di cuocere la cornea.
+
+Usiamo la luce perché la luce non è normata (siamo liberi di usare qualunque frequenza d'onda senza dover pagare le licenze), e perché la luce ha una banda molto ampia, e quindi permette di trasmettere dati a velocità elevate su distanze più lunghe. Per questo la preferiamo alle radiofrequenze, che sono normate e hanno una banda limitata, e quindi non permettono di trasmettere dati a velocità elevate su distanze più lunghe.\\
+
+Multipath Fading è un fenomeno che si verifica quando un segnale wireless viene riflesso da oggetti come edifici, alberi o veicoli, e quindi arriva al ricevitore con più percorsi diversi, e può causare interferenze e distorsioni nel segnale, e quindi limitare la qualità del segnale e la velocità di trasmissione nelle comunicazioni wirelesss. È un problema delle radiofrequenze e non della luce, perché la luce non viene riflessa dagli oggetti, e quindi non subisce il fenomeno del multipath fading.\\
+
+\paragraph{Standard di sicurezza dei laser}
+I laser sono classificati in base alla loro potenza e al rischio che rappresentano per la salute umana, e sono suddivisi in 4 classi principali:
+\begin{itemize}
+    \item Classe 1: sono laser a bassa potenza che non rappresentano un rischio per la salute umana, e possono essere utilizzati senza restrizioni.\\
+    \item Classe 2: sono laser a bassa potenza che rappresentano un rischio per la salute umana se vengono guardati direttamente per un periodo prolungato, e devono essere utilizzati con precauzioni.\\
+    \item Classe 2M: sono laser a bassa potenza che rappresentano un rischio per la salute umana se vengono guardati direttamente con strumenti ottici, come ad esempio binocoli o telescopi, e devono essere utilizzati con precauzioni.\\
+    \item Classe 3: sono laser a media potenza che rappresentano un rischio per la salute umana se vengono guardati direttamente, e devono essere utilizzati con precauzioni e dispositivi di protezione.\\
+    \item Classe 3B: sono laser a media potenza che rappresentano un rischio per la salute umana se vengono guardati direttamente, e devono essere utilizzati con precauzioni e dispositivi di protezione, e sono soggetti a restrizioni legali.\\
+    \item Classe 3R: sono laser a media potenza che rappresentano un rischio per la salute umana se vengono guardati direttamente, e devono essere utilizzati con precauzioni e dispositivi di protezione, e sono soggetti a restrizioni legali.\\
+    \item Classe 4: sono laser ad alta potenza che rappresentano un rischio per la salute umana se vengono guardati direttamente, e devono essere utilizzati con precauzioni e dispositivi di protezione, e sono soggetti a restrizioni legali.\\
+\end{itemize}
+
+\paragraph{OWC vs Wireless (RF)}
+
+\paragraph{Caratteristiche dei sistemi OWC}
+
+Il processamento del segnale elettrico è in banda base, trasformo il segnale da elettrico in ottico. Quando ricevo metto un fotodiodo nel field of view del laser. Questo field of view è più stretto per i laser perché sono più focalizzati rispetto alla luce LED. Quindi il fotodiodo sarà più piccolo per i laser rispetto ai LED quindi lavoro Line of Sight (LOS) con i laser, e non Line of Sight (NLOS) con i LED.\\
+Il vantaggio di lavorare in LOS è che posso raggiungere velocità di trasmissione elevate su distanze più lunghe, perché il segnale ottico non subisce interferenze e distorsioni causate da oggetti come edifici, alberi o veicoli, e quindi posso trasmettere dati a velocità elevate su distanze più lunghe.\\
+Il vantaggio di lavorare in NLOS è che posso trasmettere dati anche in ambienti in cui la linea di vista è ostruita da oggetti come edifici, alberi o veicoli, e quindi posso fornire connettività wireless in ambienti urbani densi o in ambienti interni, ma il problema è che il segnale ottico subisce interferenze e distorsioni causate da oggetti come edifici, alberi o veicoli, e quindi limita la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+
+I ricevitori posso usarli di qualunque tipo. 
+
+Il vantaggio di OWC è che ho una banda molto grande, è sicuro perché la luce non attraversa i muri quindi le informazioni rimangono nell'ambiente, può essere utilizzato negli ambieniti come ospedali aerei o impianti industriali perché non c'è rischio di interferenze elettromagnetiche, ed è a basso costo.\\
+Gli svantaggio sono il Los quindi gli ostacoli impediscono la comunicazione, L'interferenza atmosferica come luce solare o artificiale che introducono rumore, l'influenza meterologica (FSO), e una mobilità ridotta.\\
+
+\paragraph{Applicazioni dei sistemi OWC}
+Usati negli ospedali, negli aerei e conferenze, nelle industrie, nelle reti V2V e trasporto, nel backhaul, nelle comunicazioni militari (FSO e UV).\\
+
+\subsection{Optical wireless PAN e BAN}
+
+Personal Area Network (PAN) è una rete di comunicazione che collega dispositivi personali, come ad esempio smartphone, tablet, laptop e dispositivi indossabili, all'interno di un'area limitata, come ad esempio una stanza o un edificio.\\
+Body Area Network (BAN) è una rete di comunicazione che collega dispositivi indossabili o impiantati all'interno del corpo umano, come ad esempio sensori medici, dispositivi di monitoraggio della salute e dispositivi di assistenza sanitaria, per fornire connettività wireless e supportare applicazioni come la telemedicina e la salute digitale.\\
+\subsection{Optical wireless Vehicular Ad Hoc Network - VANET}
+Sono reti che comunicano tra due veicoli o tra veicoli e infrastrutture stradali, e possono essere utilizzate per fornire connettività wireless ad alta velocità e supportare applicazioni come la guida autonoma, la sicurezza stradale e la gestione del traffico.\\
+
+\subsection{ LANET}
+
+\subsection{Optical Camera Communications - OCC}
+
+\paragraph{OWC per applicazioni aeronautiche}
+
+\paragraph{Standards}
+PPM (Pulse Position Modulation) è una tecnica di modulazione in cui la posizione di un impulso all'interno di un intervallo di tempo viene utilizzata per rappresentare un simbolo. Quindi in base alla posizione dell'impulso (che trasmetto sempre) so se è uno 0 o 1.\\
+
+ciao
+
+Tecniche di modulazione per OWC:
+\begin{itemize}
+    \item OOK
+    \item OFDM
+    \item PPM
+    \item PAM-4
+\end{itemize}
+
+In genere voglio o ricevere la luce LoS o NLoS, se uso tutte e due posso imbattermi in delle interferenze.
+
+Confronto LiFi vs WiFi:
+
+\subsection{Free Space Optics - FSO}
+
+\subsection{Underwater optical wireless communications}
+L'acqua attenua di meno la luce blu e molto la luce rossa, quindi per le comunicazioni sottomarine si usano laser blu o verdi.\\
+
+Nell'acqua la velcità della luce è circa 200 mila km/s, quindi è più lenta che nell'aria, e questo può causare problemi di sincronizzazione e di latenza nelle comunicazioni sottomarine.\\
+
+Il problema grosso di queste comunicazioni è l'attenuazione.
+
+

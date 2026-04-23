@@ -1,0 +1,83 @@
+\documentclass[oneside]{book}
+
+\title{Appunti di Wireline and Wireless Networks}
+\author{Laura Straccini}
+\date{\today}
+
+% --- INIZIO richiamo di pacchetti di utilità.
+\usepackage[plainpages=false]{hyperref}	% generazione di collegamenti ipertestuali su indice e riferimenti
+\usepackage[all]{hypcap} % per far si che i link ipertestuali alle immagini puntino all'inizio delle stesse e non alla didascalia sottostante
+\usepackage{amsthm}	% per definizioni e teoremi
+\usepackage{amsmath}	% per ``cases'' environment
+% --- FINE riachiamo di pacchetti di utilità
+
+\usepackage{xcolor}
+\usepackage{listings}
+
+\usepackage{float}
+\usepackage{graphicx}
+
+% Definizione colori stile "Vibrant Neon" (Sfondo schiarito e più colori)
+\definecolor{darkslateblue}{RGB}{40, 40, 54}    % Sfondo grigio meno cupo
+\definecolor{darkturquoise}{RGB}{0, 206, 209}     % Keyword principali
+\definecolor{deeppink}{RGB}{255, 20, 147}  % Stringhe
+\definecolor{gainsboro}{RGB}{220, 220, 220}    % Commenti
+\definecolor{yellowneon}{RGB}{255, 255, 0}   % Tipi di dati (int, float, ecc.)
+\definecolor{darkviolet}{RGB}{147, 50, 186}   % Numeri e Costanti
+\definecolor{softwhite}{RGB}{240, 240, 240}  % Testo base (variabili)
+
+\lstset{
+    backgroundcolor=\color{darkslateblue},   
+    commentstyle=\color{gainsboro}\itshape,
+    keywordstyle=\color{darkturquoise}\bfseries,
+    % Aggiungiamo enfasi per i tipi di dati comuni in C++
+    emph={int,char,double,float,unsigned,void,bool},
+    emphstyle=\color{yellowneon},
+    numberstyle=\tiny\color{darkviolet},
+    stringstyle=\color{deeppink},
+    basicstyle=\ttfamily\scriptsize\color{softwhite}, % "scriptsize" lo rende più piccolo
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=8pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    language=C++,
+    frame=leftline,                 
+    rulecolor=\color{deeppink},  % Cambiato in magenta per staccare dallo sfondo
+    xleftmargin=12pt,
+    % Per evidenziare i numeri nel codice
+    literate={0}{{\textcolor{darkviolet}{0}}}{1}
+             {1}{{\textcolor{darkviolet}{1}}}{1}
+             {2}{{\textcolor{darkviolet}{2}}}{1}
+             {3}{{\textcolor{darkviolet}{3}}}{1}
+             {4}{{\textcolor{darkviolet}{4}}}{1}
+             {5}{{\textcolor{darkviolet}{5}}}{1}
+             {6}{{\textcolor{darkviolet}{6}}}{1}
+             {7}{{\textcolor{darkviolet}{7}}}{1}
+             {8}{{\textcolor{darkviolet}{8}}}{1}
+             {9}{{\textcolor{darkviolet}{9}}}{1}
+}
+
+
+\begin{document}
+
+\frontmatter
+\maketitle % Sostituisce \generaFrontespizio
+\tableofcontents % Sostituisce \generaIndice
+
+\mainmatter
+
+% Sostituiamo il comando \capitolo con i comandi standard \chapter e \input (o \include)
+\chapter{Sistemi di Comunicazione Qualsiasi}
+\input{capitolo1}
+
+\chapter{Sistemi Wireline e Wireless}
+\input{capitolo2}
+
+\chapter{IoT}
+\input{capitolo3}
+
+
+\end{document}
