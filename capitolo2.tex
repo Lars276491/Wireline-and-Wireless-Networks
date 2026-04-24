@@ -552,5 +552,112 @@ L'acqua attenua di meno la luce blu e molto la luce rossa, quindi per le comunic
 Nell'acqua la velcità della luce è circa 200 mila km/s, quindi è più lenta che nell'aria, e questo può causare problemi di sincronizzazione e di latenza nelle comunicazioni sottomarine.\\
 
 Il problema grosso di queste comunicazioni è l'attenuazione.
+\section{Propagazione dei segnali RF}
 
+Descrive la propagazione a radiofrequenza, visto che sono onde elettromagnetiche, seguono le equazioni di maxwell, e quindi si propagano in linea retta, ma possono essere riflessi, diffratti o assorbiti da oggetti come edifici, alberi o veicoli, e quindi possono subire interferenze e distorsioni nel segnale, e quindi limitare la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
 
+Ci sono altre due tecniche (citiamo solamente):
+\begin{itemize}
+    \item Propagazione per onda di terra (ground wave): l'onda riesce a seguire la curvatura della terra, e quindi può essere utilizzata per trasmettere dati a lunga distanza, ma il problema è che l'onda subisce attenuazione e distorsione causate da ostacoli come edifici, alberi o veicoli, e quindi limita la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+    \item Propagazione ionosferica: si basa sulla riflessione dello strato atmosferico chiamato ionosfera, e permette di trasmettere dati a lunga distanza, ma il problema è che la riflessione può essere influenzata da fattori come l'attività solare, le condizioni atmosferiche e le interferenze elettromagnetiche, e quindi limita la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+\end{itemize}
+
+Quando propaghiamo un segnale nel vuoto c'è un attenuazione. Questo accade perché l'energia del segnale si distribuisce su una superficie sferica che cresce con il quadrato della distanza, e quindi l'intensità del segnale diminuisce con il quadrato della distanza, e questo fenomeno è chiamato attenuazione spaziale o attenuazione di propagazione. Questa attenuazione si chiama path loss.\\
+
+C'è anche l'attenuazione fading, dato per esempio se c'è pioggia o neve, che possono causare interferenze e distorsioni nel segnale, e quindi limitare la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+
+Il peggiore è il multipath fading che si verifica quando un segnale wireless viene riflesso da oggetti come edifici, alberi o veicoli, e quindi arriva al ricevitore con più percorsi diversi, e può causare interferenze e distorsioni nel segnale, e quindi limitare la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless. Può aggirare gli ostacoli con la diffrazione.\\
+
+Interferenza costruittiva: quando i segnali riflessi arrivano al ricevitore in fase, e quindi si sommano, e quindi aumentano l'intensità del segnale, e migliorano la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+Interferenza distruttiva: quando i segnali riflessi arrivano al ricevitore fuori fase, e quindi si sottraggono, e quindi diminuiscono l'intensità del segnale, e peggiorano la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+
+Si studia il multipath fading considerando due modelli:
+\begin{itemize}
+    \item Modello di Rayleigh: si basa sulla distribuzione di Rayleigh, e viene utilizzato per descrivere il multipath fading in ambienti urbani densi, dove ci sono molti oggetti che possono riflettere il segnale, e quindi il segnale arriva al ricevitore con più percorsi diversi, e può causare interferenze e distorsioni nel segnale, e quindi limitare la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+    \item Modello di Rician: si basa sulla distribuzione di Rician, e viene utilizzato per descrivere il multipath fading in ambienti urbani meno densi, dove ci sono meno oggetti che possono riflettere il segnale, e quindi il segnale arriva al ricevitore con meno percorsi diversi, e quindi può causare meno interferenze e distorsioni nel segnale, e quindi migliorare la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+\end{itemize}
+
+Il multipath fading va a calcolare il SNR (evidenziando anche il SNR medio). A volte questo rapporto va a zero e significa che non abbiamo segnale (si chiama Deep Fade (null)). Possiamo avere un fading selettivo in frequenza, la risposta funzione di trasferimento è molto ampia e copre quasi tutta la banda del segnale.
+Se considerando la funzione di trasferimento è soggetto al fading, e la banda del segnale è più piccola, si chiama Flat Fading.\\
+\subsection{Spettro elettromagnetico RF}
+
+I sistemi a radiofrequenze usano frequenze comprese tra 300 MHz a 40 GHz per le comunicazioni wireless, e possono essere suddivisi in diverse bande di frequenza, come ad esempio:
+\begin{itemize}
+    \item Banda VHF (Very High Frequency): da 30 MHz a 300 MHz
+    \item Banda UHF (Ultra High Frequency): da 300 MHz a 3 GHz
+    \item Banda SHF (Super High Frequency): da 3 GHz a 30 GHz
+    \item Banda EHF (Extremely High Frequency): da 30 GHz a 300 GHz
+\end{itemize}
+
+La L-band (1-2 GHz) è utilizzata principalmente per le comunicazioni satellitari e per le comunicazioni mobili, come ad esempio il GSM e il CDMA.\\
+La C-band (4-8 GHz) è utilizzata principalmente per le comunicazioni satellitari e per le comunicazioni a microonde, come ad esempio il Wi-Fi e il Bluetooth, meno sensibile alla pioggia.\\
+La X-band (8-12 GHz) è utilizzata principalmente per le comunicazioni radar, militarti.\\   
+La Ku-band (12-18 GHz) è utilizzata principalmente per la tv satellitare e backhaul.\\
+La Ka-band (26.5-40 GHz) è utilizzata principalmente per le comunicazioni satellitari ad altra capacità, 5G.\\
+
+Il bluetooth, WiFi e LoRaWAN lavorano in frequenze ISM (non licenziate), e quindi possono essere utilizzati senza dover pagare le licenze, ma il problema è che queste frequenze sono soggette a interferenze e distorsioni causate da altri dispositivi che utilizzano le stesse frequenze, e quindi limitano la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+
+\subsection{Trasmissioni wireless alle microonde}
+
+\begin{itemize}
+    \item Collegamenti punto punto
+    \item reti cellulari
+    \item comunicazini satellitari
+    \item radar civili e militari
+    \item ponti radio per reti di accesso 
+\end{itemize}
+
+\paragraph{WiFi}I sistemi WiFi lavorano o 2.4 GHz o 5 GHz, la portata dipende dalla potenza che utilizza il nostro terminale, bisognerebbe limitare le zone d'ombra (è sensibile agli ostacoli). Interferenza data dagli ostacoli.\\
+
+\paragraph{4G e 5G}Per i sistemi 4G e 5G le frequenze sono quasi le stesse, si propagano il linea retta. Per superare le interferenze con ostacoli, sfruttano le riflessioni, e quindi lavorano in NLOS. Per i segnali 5G l'attenuazione è molto alta (data anche da ostacoli piccoli) e quindi le portate diminuiscono.
+Usiamo OFDM usata con MIMO per far lavorare i sistemi 4G e 5G.\\
+
+\paragraph{Antenne} Le caratteristiche di un'antenna sono quello che si chiama diagramma di radiazione, che è una rappresentazione grafica della distribuzione dell'intensità del segnale emesso da un'antenna in funzione della direzione, e permette di visualizzare la direzione in cui l'antenna emette il segnale con maggiore intensità, e quindi di ottimizzare la copertura del segnale e la qualità del segnale nelle comunicazioni wireless.\\
+
+L'antenna isotropica è un'antenna ideale che emette il segnale in tutte le direzioni con la stessa intensità, e viene utilizzata come riferimento per misurare la potenza del segnale emesso da altre antenne, e quindi permette di confrontare le prestazioni di diverse antenne nelle comunicazioni wireless. 
+Il guadagno dell'antenna viene misurata rispetto all'antenna isotropica.\\
+
+L'antenna omnidirezionale è composta da un filo che percorso da corrette genera un campo elettromagnetico. Il parametro fondamentale che caratterizza l'antenna è la lunghezza d'onda del segnale che è ricevuto o trasmesso, in genere è lunga la metà della lunghezza d'onda. Dipolo Marconiano è lunga solo un quarto della lunghezza d'onda, e quindi è più piccola, e quindi è più facile da installare, ma ha un guadagno inferiore rispetto al dipolo Marconiano (è quello che abbiamo sulla macchina perché il tetto della macchina ci fa da specchio). La direttività dell'antenna è la capacità di concentrare il segnale in una direzione specifica, e viene misurata in gradi, e permette di ottimizzare la copertura del segnale e la qualità del segnale nelle comunicazioni wireless. C'è un guadagno perché è leggermente direzionale.\\
+
+Se voglio che un fascio vaghi in un determinato settore, uso un'antenna direttiva, che è composta da un insieme di elementi che lavorano insieme per concentrare il segnale in una direzione specifica, e permette di ottimizzare la copertura del segnale e la qualità del segnale nelle comunicazioni wireless. Ha un lobo principale, e altri secondari, e il back lobe.
+Le antenne phased array si usano per sonar o radar e per le comunicazioni satellitari, e permettono di controllare la direzione del segnale emesso da un'antenna senza dover spostare fisicamente l'antenna, e quindi migliorare la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+
+Nei cellulari si usano antenne a microstriscia (patch) perché sono piccole, leggere e facili da integrare nei dispositivi mobili, e permettono di trasmettere e ricevere segnali a radiofrequenza con una buona efficienza, e quindi migliorare la qualità del segnale e la velocità di trasmissione nelle comunicazioni wireless.\\
+
+Le antenne per sistemi wi fi.\\
+
+Le antenne per sistemi 4G e 5G.\\
+
+\subsection{Perdite di propagazione}
+
+Considerano un'antenna teorica isotropa, quindi un punto che irradia in tutte le direzioni con la stessa potenza, e quindi se voglio calcolare la potenza che arriva a una distanza d, devo considerare che la potenza si distribuisce su una superficie sferica di raggio d, e quindi l'intensità del segnale diminuisce con il quadrato della distanza, e questo fenomeno è chiamato attenuazione spaziale o attenuazione di propagazione, e viene misurato in decibel (dB) come rapporto tra la potenza del segnale emesso dall'antenna e la potenza del segnale ricevuto a una distanza d.\\
+\subsection{Multiple Input Multiple Output -MIMO}
+Serve per fronteggiare il multipath fading, e consiste nell'utilizzare più antenne per trasmettere e ricevere dati, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione nelle comunicazioni wireless.\\
+
+Usiamo più antenne in trasmissione e più antenne in ricezione, e quindi posso sfruttare le riflessioni del segnale per migliorare la qualità del segnale e aumentare la velocità di trasmissione nelle comunicazioni wireless. Non aumento sempre la capacità del segnale, dipende come uso le antenne. Usare più antenne significa fare il multiplexing spaziale. Con il MIMO il fatto che mi arrivano più copie dello stesso segnale è diventato un vantaggio perché posso sfruttare le riflessioni del segnale per migliorare la qualità del segnale e aumentare la velocità di trasmissione nelle comunicazioni wireless, è diventato quindi uno standard.\\
+
+Il MIMO si coniuga con tre modi diversi:
+\begin{enumerate}
+    \item Precoding (Beamforming): antenne multiple al trasmettitore per aumentare il guadagno dell'antenna, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione nelle comunicazioni wireless.\\
+    \item Spatial Multiplexing: utilizzo di più antenne per trasmettere simultaneamente più flussi di dati, aumentando la capacità della rete.\\
+    \item Diversity Coding: utilizzo di più antenne per trasmettere lo stesso flusso di dati, aumentando la robustezza del segnale e riducendo il rischio di perdita di dati.\\
+\end{enumerate}
+
+\paragraph{Preconding}
+
+Se uso più antenne e faso i segnali riesco a direzionare i segnali delle antenne, questi segnali si sommano in modo costruttivo nella direzione desiderata, e si annullano in modo distruttivo nelle altre direzioni, e quindi posso aumentare il guadagno dell'antenna e migliorare la qualità del segnale e aumentare la velocità di trasmissione nelle comunicazioni wireless.\\
+Se anche il ricevitore costuito da più antenne, non riesco a direzionare il segnale sommato su tutte le antenne, ma riesco a direzionarlo su una sola antenna.\\ 
+Non aumento la capacità del segnale, non aumento banda.\\
+\paragraph{Spatial Multiplexing}
+Prendo il segnale a un determinato bitrate, lo suddivido in più flussi, e ogni flusso viene trasmesso da un'antenna trasmittente diversa nello stesso canale di frequenza.
+
+\paragraph{Multi User MIMO - MU - MIMO}
+
+Mentre nei sistemi single user MIMo tutte le antenne trasmittenti inviano informazioni solo a un destinatario, nei sistemi WiFI 6 e 7 è possibile dividere il fascio di informazioni a più destinatari.
+
+Nel Multi User MIMO posso trasmettere da due antenne a due utenti diversi.\\
+
+\paragraph{Diversity coding}
+Prendo lo stesso segnale e lo trasmetto da più antenne, e quindi posso aumentare la robustezza del segnale e ridurre il rischio di perdita di dati nelle comunicazioni wireless, perché se una delle antenne subisce un'interferenza o una distorsione, le altre antenne possono ancora trasmettere il segnale correttamente.\\
+
+\section{Reti Satellitari}
