@@ -1,1 +1,35 @@
-\section{IoT}
+\section{Pulse Code Modulation (PCM)}
+Il segnale analogico viene campionato a una frequenza di campionamento che deve essere almeno il doppio della frequenza massima del segnale (teorema di Nyquist), e quindi quantizzato in un certo numero di livelli, e quindi codificato in un certo numero di bit per ogni campione.\\
+Il PCM è un metodo di codifica digitale che viene utilizzato per rappresentare i segnali analogici in forma digitale, e quindi permette di trasmettere i segnali su reti digitali, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Per il segnale voce la banda è a 4 kHz, quindi per il teorema di Nyquist la frequenza di campionamento deve essere almeno 8 kHz, e quindi con una quantizzazione a 8 bit per campione si ottiene una velocità di trasmissione di 64 kbps, si trasmette un campione ogni 125 µs (1/8000).\\
+
+Quantizzazione - Ogni campione viene rappresentato da un numero binario di 8 bit, e quindi si ottiene una rappresentazione digitale del segnale analogico, e quindi permette di trasmettere i segnali su reti digitali, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Il segnale digitale viene interllacciato con i segnali provenienti da altri utenti per formare una Digital Hierarchy. Questa tecnica si chiama TDM (Time Division Multiplexing).\\
+
+\section{Plesiochronous Digital Hierarchy (PDH)}
+Il PDH è una tecnica di multiplexing che consente di combinare più segnali digitali a velocità diverse in un unico flusso di dati, e quindi permette di trasmettere i segnali su reti digitali, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Plesiocrane significa che il clock non era lo stesso. 
+
+\section{Synchronous Digital Hierarchy (SDH) - Synchronous Optical Network (SONET)}
+Fu standardizzata intorno agli '90, in italia dalla telecom. Siamo passati dalle reti PDH a quelle SDH/SONET per aggiungere controllo delle rete. LA rete è costituita da una serie di trasmettitori che li mette insieme dal multiplexing per creare il segnale di trasporto. Lungo la rete abbiamo degli amplificatori. ADM è un nodo.
+STS DEMUX separa poi il segnale.\\
+
+Questi 3 livelli di overhead mi permette un controllo del flusso, mi permette di aumentare la velocità in fibra. TUtti gli elementi della rete usano lo stesso clock, sono sincronizzati in ampiezza e in fase. Avere questa struttura ben organizzata ci permette di aprire il mio switch a determinati istanti di tempo ed estrarre il flusso di dati che mi interessa.\\
+
+Ho informazioni sullo stato della rete, posso fare il monitoraggio, posso fare il controllo del flusso, posso fare la gestione degli errori.\\
+
+Introduco quello che si chiama la qualità del servizio. Quindi l'operatore oltre a garantirti la banda, ti garantisce anche la qualità di servizio.\\
+
+Abbiamo una struttura stratificata. Prendiamo il nostro segnale elettrico, viene inserito il mio dato e aggiungo un overhead di cammino, dove questo overhead viene letto solo ricezione. Quando faccio il multiplexing ci metto l'overhead di linea, quindi mi controlla la sincronizzazione e l'errore nella comunicazione. Poi aggiungo overhead di sezione, e infine trasformo il segnale elettrico in ottico (photonic).\\
+
+Tre tipi di overhead:
+\begin{itemize}
+    \item Di cammino
+    \item Di linea
+    \item Di sessione
+\end{itemize}
+
+\paragraph{SONET: Frame STS-n}
