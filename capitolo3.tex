@@ -33,3 +33,103 @@ Tre tipi di overhead:
 \end{itemize}
 
 \paragraph{SONET: Frame STS-n}
+
+\paragraph{Riassunto lezione}
+Nelle gerarchie digitali, prendiamo i segnali digitali e li multiplexiamo per formare un segnale di trasporto, e quindi permettere la trasmissione su reti digitali, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Ogni utente ogni 125 µs (1/8000) invia un campione di 8 bit, e quindi si ottiene una velocità di trasmissione di 64 kbps, e quindi si trasmette un campione ogni 125 µs (1/8000). Per fare questo metto insieme altri canali e questo si chiama time division multiplexing (TDM).\\
+
+Le reti sincrone (SDH/SONET), trasmettere in fibra ottica ma bisogna controllare il segnale quindi si aggiunge un overhead. Se voglio vedere quanto rumore introducono gli amplificatori, considero l'overhead di sezione, invece l'overhead di linea mi permette di controllare la sincronizzazione e l'errore nella comunicazione, e quindi mi permette di monitorare lo stato della rete, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Il multiplexing è elettrico, quando rigenero del segnale (elettrico - ottico) aggiungo l'overhead di sezione, quando faccio il multiplexing (elettrico - elettrico) aggiungo l'overhead di linea, quando faccio il multiplexing (elettrico - ottico) aggiungo l'overhead di cammino.\\
+
+I 3 overhead sono separati. 
+
+\section{Rete}
+Tutti gli operatori integrano i sistemi wireline e wireless. Le reti mobili e le reti fisse a banda larga condividono le infrastrutture che ospitano i loro apparati (centrali) e usano entrambi le reti di trassporto e per il trasferimento dei rispettivi flussi di traffico.\\
+
+\textbf{Reti client}: esclusivamente dedicate al offrire servizi al cliente finale\\
+
+\textbf{Reti server}: esclusivamente dedicate a offrire servizi ad altri operatori\\
+
+Mi serve una rete multi operatore.
+
+\paragraph{Struttura reti in fibra ottica}
+\begin{itemize}
+    \item Rete di accesso: connette l'utente finale alla rete di trasporto, e quindi permette di trasmettere i segnali su reti digitali, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+    \item Rete di trasporto: connette le reti di accesso alla rete core, e quindi permette di trasmettere i segnali su reti digitali, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+    \item Rete core: connette le reti di trasporto tra loro, e quindi permette di trasmettere i segnali su reti digitali, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+\end{itemize}
+
+\section{Internet}
+La gerarchia degli Internet Service Provider (ISP) è costituita da tre livelli:
+\begin{itemize}
+    \item Tier 1: ISP che hanno una rete globale e non dipendono da altri ISP per la connettività. Questi ISP hanno accordi di peering con altri Tier 1 per scambiare traffico senza costi. Esempi di Tier 1 includono AT&T, Verizon, CenturyLink, NTT Communications, Tata Communications, e Level 3 Communications.
+    \item Tier 2: ISP che hanno una rete regionale o nazionale e dipendono da Tier 1 per la connettività globale. Questi ISP hanno accordi di peering con altri Tier 2 e Tier 1, ma possono anche acquistare connettività da Tier 1. Esempi di Tier 2 includono Comcast, Time Warner Cable, Cox Communications, e Charter Communications.
+    \item Tier 3: ISP che forniscono servizi di accesso a Internet a clienti finali e dipendono da Tier 1 e Tier 2 per la connettività. Questi ISP non hanno accordi di peering e acquistano connettività da Tier 1 e Tier 2. Esempi di Tier 3 includono piccoli provider locali e regionali, come ad esempio RCN, EarthLink, e Windstream.
+\end{itemize}
+
+Inmternet è un sistema multi dominio - multi operatore. Mi serve un protocollo che definisce una configurazione di rete. O pago il transito o faccio peering. Il peering è un accordo tra due ISP per scambiare traffico senza costi, mentre il transito è un accordo in cui un ISP paga un altro ISP per trasportare il suo traffico verso destinazioni al di fuori della propria rete.\\
+
+Di solito i Tier 1 non pagano a nessuno, i Tier 2 pagano ai Tier 1, e i Tier 3 pagano ai Tier 2. Tuttavia, ci sono eccezioni a questa regola, e alcuni Tier 2 possono avere accordi di peering con altri Tier 2 o con Tier 1, e alcuni Tier 3 possono avere accordi di peering con altri Tier 3 o con Tier 2. Si misurano quanti gigabit devo usare e li pago.\\
+
+I provider (cloudflare, akamai, fastly) sono provider di contenuti, devono raggiungere il più possibile l'utente vicino. Quindi hanno una loro rete e si connettono agli Internet Exchange Point (IXP) per raggiungere i Tier 1, Tier 2, e Tier 3 e fare peering. Loro si mangiano più o meno il 70\% della banda.\\
+
+Aziende come Google, meta e amazon (Hyperscaler) hanno investito sulle loro reti per non dipendere da altri provider.\\
+
+\paragraph{Intenet Exchange Point - IXP}
+Un Internet Exchange Point (IXP) è una struttura fisica che consente agli Internet Service Provider (ISP) e ad altri operatori di rete di scambiare traffico Internet tra loro. Gli IXP sono punti di interconnessione neutri, in cui gli ISP possono connettersi direttamente tra loro per scambiare traffico senza dover passare attraverso un provider di transito.\\
+
+\paragraph{Optical Transport Network - OTN}
+L'Optical Transport Network (OTN) è un insieme di standard e tecnologie che definiscono un'infrastruttura di trasporto ottico per la trasmissione di dati su reti di telecomunicazione. L'OTN è progettato per supportare una vasta gamma di servizi, tra cui voce, video, e dati, e offre funzionalità avanzate come la gestione del traffico, la protezione dei dati, e la qualità del servizio (QoS).\\
+L'OTN utilizza una struttura di frame gerarchica per trasportare i dati, e supporta la multiplexing di diversi tipi di traffico, come ad esempio Ethernet, SONET/SDH, e Fibre Channel. L'OTN è ampiamente utilizzato nelle reti di telecomunicazione per fornire connettività ad alta velocità e affidabile tra i nodi della rete.\\
+
+\paragraph{Interfacce}
+Le interfacce sono i punti di connessione tra i dispositivi di rete, e quindi permettono di trasmettere i segnali su reti digitali, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+
+\paragraph{Tandem Connection Monitoring - TCM}
+Il Tandem Connection Monitoring (TCM) è una funzionalità dell'Optical Transport Network (OTN) che consente di monitorare la qualità del segnale e la performance delle connessioni di trasporto ottico. Il TCM utilizza una serie di parametri e metriche per valutare la qualità del segnale, come ad esempio il tasso di errore, la potenza del segnale, e la latenza. Il TCM è progettato per fornire informazioni dettagliate sulla qualità del segnale e sulla performance delle connessioni di trasporto ottico, e quindi permette di identificare e risolvere rapidamente eventuali problemi di rete, e quindi migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+\paragraph{Optical Transport Hierarchy - OTH}
+L'Optical Transport Hierarchy (OTH) è una struttura gerarchica utilizzata nell'Optical Transport Network (OTN) per organizzare e gestire i flussi di dati trasportati su reti di telecomunicazione. L'OTH definisce diversi livelli di gerarchia, ognuno dei quali rappresenta un livello di aggregazione dei dati. I livelli dell'OTH includono:
+\begin{itemize}
+    \item OTH-1: il livello più basso della gerarchia, che rappresenta i flussi di dati individuali, come ad esempio Ethernet, SONET/SDH, e Fibre Channel.
+    \item OTH-2: il livello intermedio della gerarchia, che rappresenta l'aggregazione di più flussi di dati OTH-1.
+    \item OTH-3: il livello più alto della gerarchia, che rappresenta l'aggregazione di più flussi di dati OTH-2.
+\end{itemize}
+L'OTH è progettato per fornire una struttura organizzata e gerarchica per gestire i flussi di dati trasportati su reti di telecomunicazione, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+\subsection{Photonic layer}
+
+Il livello fotonico (Photonic layer) è il livello più basso della gerarchia dell'Optical Transport Network (OTN), e si occupa della trasmissione dei segnali ottici attraverso la fibra ottica. Il livello fotonico gestisce la modulazione del segnale ottico, la gestione della potenza del segnale, e la compensazione delle perdite di segnale durante la trasmissione. Il livello fotonico è progettato per garantire una trasmissione affidabile e ad alta velocità dei segnali ottici su reti di telecomunicazione, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Abbiamo tre tipi di overhead:
+\begin{itemize}
+    \item Optical channel overhead (OCH): gestisce la trasmissione del segnale ottico, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+    \item Optical multiplex section overhead (OMS): gestisce la multiplexing dei segnali ottici, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+    \item Optical Transport section overhead (OTS): gestisce la trasmissione dei segnali ottici attraverso la fibra ottica, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+\end{itemize}
+
+\subsection{Digital Layer}
+Il livello digitale (Digital layer) è il livello intermedio della gerarchia dell'Optical Transport Network (OTN), e si occupa della gestione dei flussi di dati digitali trasportati su reti di telecomunicazione. Il livello digitale gestisce la multiplexing dei flussi di dati digitali, la gestione end-to-end delle connessioni, e il monitoraggio delle performance della rete. Il livello digitale è progettato per garantire una trasmissione affidabile e ad alta velocità dei dati digitali su reti di telecomunicazione, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Abbiamo tre tipi di overhead:
+\begin{itemize}
+    \item Optical Payload Unit overhead (OPU): gestisce la multiplexing dei flussi di dati digitali, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+    \item Optical Data Unit overhead (ODU): gestisce la gestione end-to-end delle connessioni, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+    \item Optical Transport Unit overhead (OTU): gestisce il monitoraggio delle performance della rete, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+\end{itemize}
+
+\subsection{Struttura del frame OPU0}
+Il frame OPU0 è la struttura di base del livello digitale dell'Optical Transport Network (OTN), e si occupa della gestione dei flussi di dati digitali trasportati su reti di telecomunicazione. Il frame OPU0 è composto da una serie di campi, tra cui:
+\begin{itemize}
+    \item Payload: contiene i dati digitali trasportati, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+    \item Overhead: contiene informazioni di controllo e gestione, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+\end{itemize}
+
+Il frame OPU0 è progettato per garantire una trasmissione affidabile e ad alta velocità dei dati digitali su reti di telecomunicazione, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+\subsection{Forward Error Control - FEC}
+È una tecnica di controllo degli errori a priori. Aggiungo dei bit di ridondanza al segnale trasmesso, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+Si usa la tecnica dei codici Reed Solomon, che sono codici a blocchi che possono correggere errori multipli in un blocco di dati. I codici Reed Solomon sono ampiamente utilizzati nelle reti di telecomunicazione per garantire una trasmissione affidabile dei dati, e quindi permettono di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\   
