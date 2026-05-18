@@ -133,3 +133,98 @@ Il frame OPU0 è progettato per garantire una trasmissione affidabile e ad alta 
 \paragraph{Forward Error Control - FEC}
 È una tecnica di controllo degli errori a priori. Aggiungo dei bit di ridondanza al segnale trasmesso, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
 Si usa la tecnica dei codici Reed Solomon, che sono codici a blocchi che possono correggere errori multipli in un blocco di dati. I codici Reed Solomon sono ampiamente utilizzati nelle reti di telecomunicazione per garantire una trasmissione affidabile dei dati, e quindi permettono di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\   
+
+Le funzioni dell'otn sono:
+\begin{itemize}
+    \item Multiplexing
+    \item Adaptation
+    \item Switching
+    \item DWDM 
+    \item Control Plane non è presente in OTN.
+\end{itemize}
+
+Non mi permette di creare sistemi on demand.
+
+\subsection{Automatically Switched Optical Networks - ASON}
+L'Automatically Switched Optical Network (ASON) è un'architettura di rete ottica che consente la commutazione automatica dei flussi di dati su reti di telecomunicazione. L'ASON utilizza un piano di controllo centralizzato per gestire la configurazione e la gestione delle connessioni ottiche, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Mi permette di introdurre un nuovo piano (piano di controllo) nella rete che si trova tra il piano di trasporto e gestione. Mi permette di creare delle connessioni su richiesta, questo tipi di connessioni possono essere permanenti o soft permanent. Il sistema switch connection sono i vari utenti che fanno delle richieste dirette al piano di controllo senza fare richieste al management.\\
+
+Nelle OTN abbiamo delle layer di trasporto e managment, ma non abbiamo un piano di controllo, quindi non possiamo fare connessioni on demand, invece con ASON introduciamo un piano di controllo che ci permette di fare connessioni on demand, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Ci sono due standard: ASON (per reti ottiche) e ASTN (Automatically Switched Transport Network) per reti anche non ottiche.\\
+
+Le caratteristiche di ASON sono:\\
+\textbf{Vantaggi}
+\begin{itemize}
+    \item Interfaccia standardizzata
+    \item Supporto multi dominio
+    \item Indipendenza dalla tecnologia di trasporto
+    \item Provising on demand
+    \item Gestione delle priorità e della QoS
+\end{itemize}
+\textbf{Funzioni}
+\begin{itemize}
+    \item Instaurazione automatica dei circuiti
+    \item Ripristino automatico ai guasti
+    \item Gestione dinamica delle risorse
+\end{itemize}
+\textbf{Caratteristiche}
+\begin{itemize}
+    \item Commutazione automatica dei flussi di dati
+    \item Piano di controllo distribuito
+    \item Separazione tra i piani
+    \item Routing dinamico con traffic engineering
+    \item Segnalazione end to end
+    \item Discovery automatico della topologia
+    \item Ripristino automatico ai guasti
+\end{itemize}
+
+Nelle OTN ogni volta che l'utente vuole richiedere più larghezza di banda , c'è una richiesta di una nuova connessione al fornitore di servizi, invece con ASON posso fare una richiesta on demand, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione.\\
+
+Nel piano di trasporto c'è tutta la parte fisica, quindi i cavi, gli amplificatori, i nodi. Nel piano di gestione lavora l'operatore. Nel piano di controllo c'è un software che si occupa di gestire la rete, quindi fa il provisioning, il monitoraggio, e la gestione delle risorse.\\
+
+Per quanto riguarda le interfacce dei sistemi ASON abbiamo più layer. 
+
+\paragraph{Livelli di rete ASON}
+Il piano di trasporto contiene gli switch, collegati tra loro tramite le phisical interface (PI).
+Il piano di gestione controlla che la configurazione delle varie risorse rimane un compito del piano di managment. Mentre nel nuovo piano di controllo introdotte da ASON, deve fare le operazioni di valutazione della topologia della rete, proteggere i singoli link e fare il traffic engineering.\\
+
+Le interfacce sono standardizzate quindi permette la interoperabilità tra i vari sistemi. Possono essere interne o esterne al dominio.\\    
+
+\paragraph{Connessioni ASON}
+Permanent Connection (PC), Soft Permanent Connection (SPC), e Switched Connection (SC).\\
+
+\subsection{Generalized Multi Protocol Label Switching - GMPLS}
+Il Generalized Multi Protocol Label Switching (GMPLS) è un'estensione del protocollo Multi Protocol Label Switching (MPLS) che consente la commutazione di flussi di dati su reti di telecomunicazione. Il GMPLS supporta la commutazione di flussi di dati su reti ottiche, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+I protocolli vengono generalizzati per supportare più tipi di reti, come ad esempio reti ottiche, reti di commutazione di pacchetto, e reti di commutazione di circuito. Il GMPLS utilizza un piano di controllo distribuito per gestire la configurazione e la gestione delle connessioni, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Il GMPLS è progettato per fornire una soluzione flessibile e scalabile per la gestione delle reti di telecomunicazione, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+\paragraph{Multi Protocol Label Switching - MPLS}
+L'MPLS prende il protocollo Ip per accelerare il forwarding nei router IP. Semplifica il routing, in ogni nodo leggo che c'è un etichetta che ha valore solo locale. Queste etichette definiscono il percorso che segue il pacchetto, questo percorso si chiama FEC (Forwarding Equivalence Class). Il GMPLS estende questa funzionalità per supportare più tipi di reti, come ad esempio reti ottiche, reti di commutazione di pacchetto, e reti di commutazione di circuito.\\
+
+Mentre nei protolli IP devo leggere il Destination Address (DA) per decidere dove mandare il pacchetto, con MPLS leggo l'etichetta e decido dove mandare il pacchetto. 
+
+\subsection{Virtual Private Network - VPN}
+Una Virtual Private Network (VPN) è una tecnologia che consente di creare una connessione sicura e privata su una rete pubblica, come ad esempio Internet. Le VPN utilizzano protocolli di crittografia per proteggere i dati trasmessi tra il dispositivo dell'utente e il server VPN, e quindi permettono di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+Le VPN sono ampiamente utilizzate per garantire la sicurezza e la privacy dei dati durante la trasmissione su reti pubbliche, e quindi permettono di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+\subsection{Resource Reservation Protocol Traffic Engineering RSVP-TE}
+Il Resource Reservation Protocol Traffic Engineering (RSVP-TE) è un protocollo di segnalazione utilizzato per la gestione delle risorse in reti di telecomunicazione. Il RSVP-TE consente di riservare risorse di rete, come ad esempio larghezza di banda e buffer, per garantire la qualità del servizio (QoS) durante la trasmissione dei dati. Il RSVP-TE è progettato per supportare la gestione dinamica delle risorse in reti di telecomunicazione, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+Il RSVP-TE utilizza un meccanismo di segnalazione per riservare risorse lungo il percorso di trasmissione dei dati, e quindi permette di garantire la qualità del servizio (QoS) durante la trasmissione dei dati, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+\subsection{Traffic Engineering - TE}
+Il Traffic Engineering (TE) è un insieme di tecniche e strumenti utilizzati per ottimizzare la gestione del traffico in reti di telecomunicazione. Il TE consente di pianificare, monitorare, e gestire il traffico in modo efficiente, al fine di migliorare la qualità del servizio (QoS) e aumentare la capacità della rete. Il TE è progettato per supportare la gestione dinamica del traffico in reti di telecomunicazione, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+\subsection{Protocolli MPLS}
+Il protocollo MPLS (Multi Protocol Label Switching) è un protocollo di commutazione che consente di instradare i pacchetti di dati in base a etichette (label) anziché in base agli indirizzi IP. Il MPLS è progettato per migliorare la velocità e l'efficienza del routing, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+Il MPLS utilizza un meccanismo di etichettatura per instradare i pacchetti di dati attraverso la rete, e quindi permette di migliorare la velocità e l'efficienza del routing, e quindi permette di migliorare la qualità del segnale e aumentare la velocità di trasmissione, e supporta anche la trasmissione bidirezionale, e quindi permette di fornire connettività wireless ad alta velocità in ambienti in cui le comunicazioni in fibra ottica non sono pratiche.\\
+
+\section{GMPLS - Generalized MPLS}
+\paragraph{Label GMPLS}
+
+\paragraph{Architettura}
+\paragraph{Piano di controllo}
