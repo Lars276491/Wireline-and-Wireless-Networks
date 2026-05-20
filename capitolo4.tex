@@ -1,1 +1,101 @@
 \section{Internet of things}
+Ci occupiamo dei sistemi di connessione compresi bluethoth, wifi e LoRaWAN \dots\\
+Quello che studiamo sono, non le applicazioni dei sistemi IoT o dei sensori stessi, ci occupiamo della trasmissione dei dati.
+Il bluethooth detto classic (BR per Basic Rate, EDR per Enhanced Data Rate) è un sistema di connessione a corto raggio, con una portata massima di 100 metri, e una velocità massima di 3 Mbps. La versione 4.0 è definita smart bluethooth o low energy (BLE), la BT (bluethooth classic) e BLE hanno protocolli diversi quindi non sono compatibili, i nostri dispositivi li usano entrambi.\\
+
+Le long Range Wide Area Network (LoRaWAN), le reti a long range (dimensioni a qualche chilometro) stanno proliferanno, stanno diventando più comuni e quindi è probabile che li vedremo nella nostra vita lavorativa.\\
+
+Usiamo delle tecnologie esistenti o estensioni delle tecnologie esistenti, le dividiamo inoltre in base all'uso.
+
+La telefonia viene utilizzata per altre applicazioni, tipicamente non vengono utilizzate per IoT, usare le frequenze per la telefonia è limitante, per questo per IoT vengono usate frequenze non licenziate chiamate ISM (Industrial, Scientific and Medical) che sono libere da licenze, e quindi possono essere utilizzate da chiunque, e sono più adatte per IoT.\\
+
+SI può modificare una rete LTE per farla diventare IoT, in questo caso si parla di LTE-M (LTE for Machine Time Comunication), è una tecnologia che utilizza le frequenze della telefonia, ma è stata progettata per essere più efficiente in termini di consumo energetico e di costi, rispetto alla LTE tradizionale.\\
+
+Nelle LTE cerchiamo di lavorare nelle frequenze GSM, il segnale si propaga con distanze ampie, e poiché le reti Low power usano lunghe distanze a costo ridotto.\\
+Le reti Low Power utilizzano Unlicensed frequenze.
+Bluethooth lo usiamo per sostituire il cavo, per connessioni di breve raggio, con una banda decente. 
+
+Zigbee è un protocollo di comunicazione wireless basato su IEEE 802.15.4, è progettato per essere utilizzato in reti a bassa potenza e a corto raggio, è utilizzato principalmente per applicazioni di automazione domestica e industriale.\\
+
+Definiamo oltre agli standard anche le applicazioni. Le personal/ local area network (PAN/LAN) sono reti che coprono un'area limitata, come una casa o un ufficio, e sono utilizzate per connettere dispositivi all'interno di quella area, possono funzionare con poca potenza.\\
+
+Le Low Power Wide Area Network (LPWAN) sono reti a bassa potenza e a lunga distanza, sono progettate per connettere dispositivi che si trovano a distanze maggiori rispetto alle PAN/LAN, e sono utilizzate principalmente per applicazioni di monitoraggio e controllo remoto.\\
+
+Le cellular network sono reti che utilizzano le frequenze della telefonia, sono progettate per connettere dispositivi che si trovano a distanze maggiori rispetto alle PAN/LAN e LPWAN, e sono utilizzate principalmente per applicazioni di monitoraggio e controllo remoto.\\
+
+\subsection{Low Power Wide Area Network - LPWAN}
+Se devo misurare per esempio un contatore dell'acqua mi serve la rete, e alcune compagnie stanno usando le LPWAN per questo, è un'applicazione tipica, ma non è l'unica.\\
+Ormai è la tecnologia più usata, è una tecnologia che sta crescendo molto, e ci sono molte aziende che stanno investendo in questo settore.\\
+Hanno due caratteristiche principali, la prima è la lunga distanza, che può arrivare fino a 10 km in ambiente urbano e fino a 15 km in ambiente rurale, e la seconda è il basso consumo energetico, che permette ai dispositivi di funzionare per anni con una sola batteria.\\
+
+Le LPWAN utilizzano frequenze non licenziate, come la banda ISM a 868 MHz in Europa e a 915 MHz negli Stati Uniti, e sono progettate per essere utilizzate in ambienti urbani e rurali.\\
+
+Le LPWAN sono utilizzate principalmente per applicazioni di monitoraggio e controllo remoto, come il monitoraggio dei contatori dell'acqua, il monitoraggio dei livelli di inquinamento, il monitoraggio dei livelli di rumore, il monitoraggio dei livelli di temperatura, il monitoraggio dei livelli di umidità, il monitoraggio dei livelli di luce, il monitoraggio dei livelli di movimento, il monitoraggio dei livelli di vibrazione, il monitoraggio dei livelli di pressione, il monitoraggio dei livelli di gas, il monitoraggio dei livelli di fumo, il monitoraggio dei livelli di radiazione, il monitoraggio dei livelli di umidità del suolo, il monitoraggio dei livelli di umidità dell'aria, il monitoraggio dei livelli di umidità del terreno, il monitoraggio dei livelli di umidità del pavimento, il monitoraggio dei livelli di umidità del soffitto, il monitoraggio dei livelli di umidità del muro, il monitoraggio dei livelli di umidità del tetto, il monitoraggio dei livelli di umidità del pavimento, il monitoraggio dei livelli di umidità del soffitto, il monitoraggio dei livelli di umidità del muro, il monitoraggio dei livelli di umidità del tetto.\\
+
+Le LPWAN sono utilizzate anche per applicazioni di automazione domestica e industriale, come il controllo delle luci, il controllo delle porte, il controllo delle finestre, il controllo dei termostati, il controllo dei sistemi di sicurezza, il controllo dei sistemi di irrigazione, il controllo dei sistemi di ventilazione, il controllo dei sistemi di riscaldamento, il controllo dei sistemi di raffreddamento, il controllo dei sistemi di illuminazione, il controllo dei sistemi di allarme, il controllo dei sistemi di sorveglianza, il controllo dei sistemi di monitoraggio, il controllo dei sistemi di gestione dell'energia, il controllo dei sistemi di gestione dell'acqua, il controllo dei sistemi di gestione del gas, il controllo dei sistemi di gestione dei rifiuti.\\
+
+\subsection{Personal Area Network - PAN}
+Studiamo lo standard Bluetooth, è uno standard di comunicazione wireless a corto raggio, progettato per connettere dispositivi personali come smartphone, tablet, laptop, cuffie, altoparlanti, stampanti, tastiere, mouse, e altri dispositivi.\\
+Tutte le reti PAN devono utilizzare bassa potenza, dalla versione 4.0 Bluetooth è diventata Low Enerrgy, la topologia è a stella nelle bluetooth standard, ma è a mesh nelle bluetooth low energy, la banda è di 2.5 GHz, e la velocità massima è di 3 Mbps per Bluetooth standard e di 1 Mbps per Bluetooth low energy.\\
+
+Il wifi e bluetooth lavorano entrambi a 2.5 GHz, ma il wifi ha una banda più ampia e una velocità maggiore, quindi è più adatto per applicazioni che richiedono una maggiore larghezza di banda, come lo streaming video o il trasferimento di file di grandi dimensioni, mentre il bluetooth è più adatto per applicazioni che richiedono una connessione a corto raggio e un basso consumo energetico, come la connessione di dispositivi personali. Quindi poiché il wifi è più dominante occupa dei canali e il bluetooth deve adattarsi, per questo il bluetooth ha una banda più stretta e una velocità inferiore per evitare interferenze con il wifi.\\
+
+Il bluetooth è uno standard SIG (Special Interest Group) che è stato sviluppato da un consorzio di aziende, tra cui Ericsson, IBM, Intel, Nokia, e Toshiba.\\
+
+Si usa perché è molto facile accoppiare i dispositivi, e la connessione è diretta ed affidabile e trasmette a 2.5 GHz, quindi è meno soggetta a interferenze rispetto ad altre frequenze.\\
+
+Lo standard è 802.15, 802.3 è ethernet, 802.11 è wifi.\\
+
+Lo utilizziamo per sostituire i cavi (stampanti, cuffie, altoparlanti, tastiere, mouse), per connettere dispositivi personali, e per applicazioni di automazione domestica e industriale. Come raggio ha brevi distanze (sotto i 10 metri), a basso costo, e a basso consumo energetico. Sono nati per sostituire l'infrared che aveva una portata molto limitata e richiedeva una linea di vista diretta tra i dispositivi.\\
+Se ho un flag che posso settare per far si che ti informo che ho ricevuto il pacchetto, se non succede ti rimando il pacchetto in maniera automatica, questo è un meccanismo di affidabilità, e se non riesco a consegnare il pacchetto dopo un certo numero di tentativi, allora ti informo che non sono riuscito a consegnare il pacchetto.\\
+
+\paragraph{Bluetooth}
+Il bluetooth 4.0 lo ha creato la nokia. Nel classic la rete è a stella (master con 7 slave, quindi il master si può collegare a 7 dispositivi), mentre nel low energy la rete è a mesh, quindi ogni dispositivo può collegarsi a più dispositivi, e i dispositivi possono comunicare tra loro senza dover passare attraverso un master.\\
+Il bluetooth low energy è stato progettato anche per connettere i cartellini elettroni del supermercato, è con low energy riesco a misurare la provenienza del segnale, cosa che non riesco a fare con il bluetooth standard, e questo è utile per applicazioni di localizzazione.\\
+
+Nel bluetooth low energy, cambio completamente la caratteristica dello spettro, infatti nello standard ho banda che suddivido in 79 canali di un MHz, quando trasmetto di nuovo cambio canale, e questo mi permette di evitare interferenze con il wifi, che occupa una banda più ampia, nel BLE ho meno canali (40) ma stessa banda quindi posso essere più flessibile.\\
+Uso la codifica per correggere l'errore, quindi diminuisco l'informazione ma aggiungo bit per allungare e arrivare a distanze maggiori, quindi con segnale rumoroso ma che posso correggere.\\
+\paragraph{Bluetooth classic}
+la rete bluetooth classic si chiama piconet.
+Il master può collegarsi  a massimo 7 dispositivi, perché ogni dispositivo viene individuato nella rete da un indirizzo di 3 bit, quindi 2 alla potenza di 3 è uguale a 8, ma uno è riservato per il master, quindi rimangono 7 indirizzi per gli slave.\\
+
+Scatternet è un insieme di piconet, quindi posso avere più piconet che si collegano tra loro, e i dispositivi possono comunicare tra loro senza dover passare attraverso un master.\\
+
+Non trasmetto solo alto o basso (0 o 1), uso la frequency shift keying, fisicamente mando un segnale che oscilla a una frequenza, se voglio trasmettere 0 mando un segnale che oscilla a una frequenza, se voglio trasmettere 1 mando un segnale che oscilla a un'altra frequenza, e questo mi permette di trasmettere informazioni in modo più efficiente e affidabile.\\
+
+I pacchetti durano da 366 microsecondi a 625 microsecondi, e la velocità massima è di 3 Mbps, ma in realtà la velocità effettiva è inferiore a causa dell'overhead dei pacchetti e delle interferenze.\\ 
+La durata di ogni pacchetto può essere numero dispari di slot, e ogni slot dura 625 microsecondi, quindi la durata minima di un pacchetto è di 366 microsecondi (1 slot) e la durata massima è di 625 microsecondi (2 slot).\\
+Posso trasmettere 1 slot, che dura 3 slot o 5 slot, inoltre il master trasmette sempre nei slot pari, mentre gli slave trasmettono nei slot dispari, questo permette di evitare collisioni tra i pacchetti.\\ 
+
+Non usa una sola frequenza, se quella frequenza si blocca (per esempio c'è il wifi) allora cambio frequenza, e questo mi permette di evitare interferenze e di migliorare l'affidabilità della connessione. Ogni volta che trasmetto un pacchetto, la mia frequenza cambia, c'è salto di frequenza, questo cambio è random. Sto cambiando la frequenza 1600 volte al secondo, quindi ogni 625 microsecondi, e questo mi permette di evitare interferenze con il wifi, che occupa una banda più ampia.\\
+Se i pacchetti hanno durata di 3 slot, la frequenza viene variata di 1600/3 secondi.\\
+
+Quindi il master e lo slave si devono sincronizzare, che è necessario affinché si aggancino nello stesso clock, poi devo decidere quale dei 79 canali usare (lo decide il master) con la tecnica del salto di frequenza, e poi devo decidere quando trasmettere, quindi devo sincronizzare i tempi di trasmissione. Il master decide quale algoritmo randomico mi permette di cambiare frequenza. L'algoritmo di cambio di frequenza di chiama Frequency Hopping Spread Spectrum (FHSS), e questo mi permette di evitare interferenze con il wifi, che occupa una banda più ampia.\\
+
+\paragraph{Frequency Hopping Spread Spectrum - FHSS}
+Nel piano di frequenza faccio dei salti pseudorandom, ovvero cambio frequenza con generazione random ma questa generazione è conosciuta sia dal master che dallo slave, quindi è pseudorandom, e questo mi permette di evitare interferenze con il wifi, che occupa una banda più ampia.\\
+
+Stata ideata da Hedy Lamarr, un'attrice austriaca che ha inventato questa tecnica durante la seconda guerra mondiale per evitare che i segnali radio venissero intercettati dai nemici.\\
+
+Nei bluetooth di terza generazione si usa l'\textbf{Adaptive Frequency Hopping (AFH)}, che è una tecnica di salto di frequenza adattiva, che permette di evitare le frequenze che sono occupate da altri dispositivi, come il wifi, e di migliorare l'affidabilità della connessione. Questo range non lo uso perché magari c'è il wifi, quindi faccio salti senza usare i "bad channel" ovvero canali che potrebbero generare interferenze e quindi rumore. Come tutti i dispositivi 802 sono identificati da un indirizzo MAC, che è un identificatore univoco a 48 bit, e questo mi permette di identificare i dispositivi nella rete. Prendo una parte dell'indirizzo MAC e li trasmetto agli slave, in questo modo gli slave possono identificare il master e sincronizzarsi con lui avendo le informazioni su come cambiare la frequenza.\\
+
+Per capire il next Hop, misuro il clock e ne aggiungo un offset, in questo modo posso prevedere quando il master trasmetterà il prossimo pacchetto, e posso sincronizzarmi con lui, quindi ho bisogno innanzitutto che master e slave siano allo stesso clock. Incremento il mio clock di 1 ogni 312,5 microsecondi, e quando ricevo un pacchetto, prendo il clock del master e lo sincronizzo con il mio clock, in questo modo posso prevedere quando il master trasmetterà il prossimo pacchetto, e posso sincronizzarmi con lui. Il master e lo slave trasmettono a vicenda il proprio clock in modo che l'altro si aggiusta con il proprio offset. 
+
+Tutti i dispositivi 802 hanno un \textbf{Media Access Control - MAC} è costituito da 48 bit, i 48 bit di solito vengono rappresentati in esadecimale, quindi ogni esadecimale rappresenta 4 bit, ma poichè è costituito da 48 bit, viene rappresentato da 12 esadecimali, e questo mi permette di identificare i dispositivi nella rete.\\
+L'indirizzo MAC è costituito da due parti, Vendor ID e Vendor Allocated. Il Vendor ID è costituito dai primi 24 bit, e identifica il produttore del dispositivo, mentre il Vendor Allocated è costituito dagli ultimi 24 bit, e viene assegnato dal produttore in modo univoco a ogni dispositivo.\\
+Il MAC viene diviso in 3 parti, LAP, UAP e NAP. Il LAP (Lower Address Part) è costituito dai primi 24 bit, e viene utilizzato per identificare il dispositivo nella rete, l'UAP (Upper Address Part) è costituito dai successivi 8 bit, e viene utilizzato per identificare il dispositivo nella rete, e il NAP (Non-significant Address Part) è costituito dagli ultimi 16 bit, e viene utilizzato per identificare il dispositivo nella rete.\\
+Il MAC del master (UAP) viene utilizzato per definire l'algoritmo che mi genera in modo pseudorandom l'hop. Per definire quale piconet sto definisco il LAP del master, e questo mi permette di identificare la piconet, e di sincronizzarmi con il master.\\
+
+\textbf{Connessioni}
+Asincrone o sincrone. Nessuno slave si azzarda a trasmettere se non ha ricevuto un pacchetto dal master, quindi è necessario riservare banda per una connessione sincrona. Il master trasmette e crea una connessione sincrona con lo slave 1 (uno slave può avere solo una connessione sincrona).\\
+Se invece uso una connessione asincrona posso creare più connessioni verso slave diverse, invede per le sincrone devono essere bidirezionali. 
+Nelle connessioni sincrone, poichè la velocità deve essere 64 bit/s, non si usa nè FEC nè ARQ che invece sono usate nelle asincrone.\\
+
+\textbf{Pacchetti}
+I pacchetti hanno una durata di 5 slot, se prendo 5 e lo moltiplico per 625 microsecondi, ottengo 3.125 millisecondi. È sempre costituito da un Access Code, un Header, un Payload. 
+L'Access Code è costituito da 72 bit, e viene utilizzato per identificare la piconet, e per sincronizzarsi con il master. L'Header è costituito da 54 bit, e viene utilizzato per identificare il tipo di pacchetto, e per identificare il dispositivo di destinazione. Il Payload è costituito da un numero variabile di bit, e viene utilizzato per trasmettere i dati.\\
+L'Access code è sempre trasmessa con un basic rate perché altrimenti non saprei come leggerli, e questo mi permette di identificare la piconet, e di sincronizzarmi con il master. L'Header è sempre trasmesso con un basic rate perché altrimenti non saprei come leggerli, e questo mi permette di identificare il tipo di pacchetto, e di identificare il dispositivo di destinazione. Il Payload può essere trasmesso con un enhanced data rate o con un basic rate, a seconda del tipo di pacchetto, e questo mi permette di trasmettere i dati in modo più efficiente e affidabile.\\
+
+
+
+\paragraph{Bluetooth low energy}
