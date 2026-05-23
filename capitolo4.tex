@@ -81,10 +81,15 @@ Nei bluetooth di terza generazione si usa l'\textbf{Adaptive Frequency Hopping (
 
 Per capire il next Hop, misuro il clock e ne aggiungo un offset, in questo modo posso prevedere quando il master trasmetterà il prossimo pacchetto, e posso sincronizzarmi con lui, quindi ho bisogno innanzitutto che master e slave siano allo stesso clock. Incremento il mio clock di 1 ogni 312,5 microsecondi, e quando ricevo un pacchetto, prendo il clock del master e lo sincronizzo con il mio clock, in questo modo posso prevedere quando il master trasmetterà il prossimo pacchetto, e posso sincronizzarmi con lui. Il master e lo slave trasmettono a vicenda il proprio clock in modo che l'altro si aggiusta con il proprio offset. 
 
+Il wifi ha una banda di 20 MHz, e il bluetooth non può occupare tutta la banda, quindi ha una banda di 1 MHz, e questo mi permette di evitare interferenze con il wifi, che occupa una banda più ampia.\\
+
+Il meccanismo di generazione che riguarda il next hop è basato sull'indirizzo MAC del master, in particolare sull'UAP (Upper Address Part) del MAC del master, che viene utilizzato per definire l'algoritmo che mi genera in modo pseudorandom l'hop. Per definire quale piconet sto definendo il LAP (Lower Address Part) del master, e questo mi permette di identificare la piconet, e di sincronizzarmi con il master.\\
+Mi dice il master quale canale usaretramite il clock e l'indirizzo MAC, e questo mi permette di evitare interferenze con il wifi, che occupa una banda più ampia.\\
+
 Tutti i dispositivi 802 hanno un \textbf{Media Access Control - MAC} è costituito da 48 bit, i 48 bit di solito vengono rappresentati in esadecimale, quindi ogni esadecimale rappresenta 4 bit, ma poichè è costituito da 48 bit, viene rappresentato da 12 esadecimali, e questo mi permette di identificare i dispositivi nella rete.\\
 L'indirizzo MAC è costituito da due parti, Vendor ID e Vendor Allocated. Il Vendor ID è costituito dai primi 24 bit, e identifica il produttore del dispositivo, mentre il Vendor Allocated è costituito dagli ultimi 24 bit, e viene assegnato dal produttore in modo univoco a ogni dispositivo.\\
 Il MAC viene diviso in 3 parti, LAP, UAP e NAP. Il LAP (Lower Address Part) è costituito dai primi 24 bit, e viene utilizzato per identificare il dispositivo nella rete, l'UAP (Upper Address Part) è costituito dai successivi 8 bit, e viene utilizzato per identificare il dispositivo nella rete, e il NAP (Non-significant Address Part) è costituito dagli ultimi 16 bit, e viene utilizzato per identificare il dispositivo nella rete.\\
-Il MAC del master (UAP) viene utilizzato per definire l'algoritmo che mi genera in modo pseudorandom l'hop. Per definire quale piconet sto definisco il LAP del master, e questo mi permette di identificare la piconet, e di sincronizzarmi con il master.\\
+Il MAC del master (UAP) viene utilizzato per definire l'algoritmo che mi genera in modo pseudorandom l'hop. Per definire quale piconet sto usando, definisco il LAP del master, e questo mi permette di identificare la piconet, e di sincronizzarmi con il master.\\
 
 \textbf{Connessioni}
 Asincrone o sincrone. Nessuno slave si azzarda a trasmettere se non ha ricevuto un pacchetto dal master, quindi è necessario riservare banda per una connessione sincrona. Il master trasmette e crea una connessione sincrona con lo slave 1 (uno slave può avere solo una connessione sincrona).\\
@@ -96,6 +101,61 @@ I pacchetti hanno una durata di 5 slot, se prendo 5 e lo moltiplico per 625 micr
 L'Access Code è costituito da 72 bit, e viene utilizzato per identificare la piconet, e per sincronizzarsi con il master. L'Header è costituito da 54 bit, e viene utilizzato per identificare il tipo di pacchetto, e per identificare il dispositivo di destinazione. Il Payload è costituito da un numero variabile di bit, e viene utilizzato per trasmettere i dati.\\
 L'Access code è sempre trasmessa con un basic rate perché altrimenti non saprei come leggerli, e questo mi permette di identificare la piconet, e di sincronizzarmi con il master. L'Header è sempre trasmesso con un basic rate perché altrimenti non saprei come leggerli, e questo mi permette di identificare il tipo di pacchetto, e di identificare il dispositivo di destinazione. Il Payload può essere trasmesso con un enhanced data rate o con un basic rate, a seconda del tipo di pacchetto, e questo mi permette di trasmettere i dati in modo più efficiente e affidabile.\\
 
+\paragraph{Modulazioni}
+Il bluetooth classic utilizza la modulazione Gaussian Frequency Shift Keying (GFSK) per il basic rate, e la modulazione Phase Shift Keying (PSK) per l'enhanced data rate. La modulazione GFSK è una modulazione di frequenza che utilizza una forma d'onda gaussiana per modulare la frequenza del segnale, mentre la modulazione PSK è una modulazione di fase che utilizza una forma d'onda sinusoidale per modulare la fase del segnale.\\
 
+Di solito il bluetooth classic non si chiama cosí ma bR (basic rate) e EDR (enhanced data rate), mentre il bluetooth low energy si chiama BLE (bluetooth low energy).\\
+
+Per EDR se uso 4 simboli posso trasmettere 2 bit per simbolo, quindi la velocità massima è di 3 Mbps, e si chiama 4-level FSK (DQPSK). Mentre se uso 8 simboli posso trasmettere 3 bit per simbolo, quindi la velocità massima è di 2 Mbps, e si chiama 8-level FSK (8DPSK).\\
+
+Questo ci crea delle grosse complessitá perché quando ricevo un pacchetto, non so se sto trasmettendo con il basic rate o con l'enhanced data rate, quindi devo essere in grado di decodificare entrambi i tipi di modulazione. 
+
+Nel classic l'accesso deve essere condiviso. La condivisione avviene tramite Time Division Duplexing (TDD), ovvero il master decide quando posso trasmettere mandando un pacchetto. quando un master manda un pacchetto verso lo slave 1, questo slave 1 puó mandare un pacchetto verso il master, ma non puó mandare un pacchetto verso lo slave 2, perché lo slave 2 non ha ricevuto un pacchetto dal master, quindi non ha il permesso di trasmettere.\\
+La durata dei pacchetti deve essere fissa perché cé una divisione di tempo quindi ci deve essere un sincronismo tra i dispositivi, e questo mi permette di evitare collisioni tra i pacchetti. Quando i dispositivi si collegano si scambiano il clock e le informazioni su come cambiare la frequenza, in questo modo possono sincronizzarsi e comunicare tra loro.\\
+La durata dei pacchetti é variabile e puó essere di 1 slot, 3 slot o 5 slot, e questo mi permette di trasmettere pacchetti di dimensioni diverse a seconda delle esigenze dell'applicazione. La durata di un time slot sono 625 microsecondi, quindi la durata minima di un pacchetto è di 366 microsecondi (1 slot) e la durata massima è di 3.125 millisecondi (5 slot). E' fatto apposta 625 microsecondi, perché l'inverso sono 8000, ovvero 8000 simboli al secondo per la trasmissione di dati.
+Il master trasmette sempre nei slot pari, mentre gli slave trasmettono nei slot dispari, questo permette di evitare collisioni tra i pacchetti.\\
+
+Quando trasmetto un pacchetto cambio di pochissimo la frequenza, ho a disposizione 79 canali di un MHz, e ogni volta che trasmetto un pacchetto, la mia frequenza cambia, c'è salto di frequenza, questo cambio è random, e questo mi permette di evitare interferenze con il wifi, che occupa una banda più ampia.\\
+
+il bluetooth non é nato per richieste di elevate di banda, ma per connettere dispositivi personali, quindi è stato progettato per essere a basso consumo energetico e a corto raggio, e non per trasmettere grandi quantità di dati. Infatti mi basta 1 Mbps per connettere un dispositivo personale, come una cuffia o un altoparlante, e non ho bisogno di una banda più ampia.\\
+
+\paragraph{Automatic Repeat Request -ARQ}
+Io master ti mando un pacchetto e lo slave é l'unico che puó trasmettere dop al time slot successivo. Trasmette e mette il flag ackoledgnment verde ACK (per dire che ha ricevuto correttamente il pacchetto). Il master manda un pacchetto non ricevuto correttamente e lo slave non mette il flag ackoledgnment verde NACK, quindi il master sa che deve ritrasmettere il pacchetto, e questo mi permette di migliorare l'affidabilità della connessione.\\
+
+Se questo pacchetto non viene ricevuto é obbligatorio ritrasmettere il pacchetto fino a un time out (devi trasmettere entro tot secondi se no la connessione é persa). Lo slave vuole connessersi e per farlo deve saperte l'indirizzo della rete e il clock del master, quindi deve ricevere un pacchetto dal master, in questo modo può sincronizzarsi con lui e comunicare tra loro perché in questo modo riceve il frequency hop.\\
+
+\paragraph{Procedure di connessioni}
+Ci sono due procedure di connessioni diverse: l'inquiry e page. L'inquiry è la procedura di ricerca dei dispositivi, in cui un dispositivo invia un pacchetto di inquiry e attende una risposta da parte dei dispositivi vicini, in questo modo può scoprire quali dispositivi sono presenti nella zona. La page è la procedura di connessione, in cui un dispositivo invia un pacchetto di page a un dispositivo specifico, e attende una risposta da parte di quel dispositivo, in questo modo può stabilire una connessione con lui, in questa preocedura affida anche i ruoli ai nodi con cui ha fatto la connessione (se è lo slave o il master).\\
+
+La cosa piú complicata é il frequency hopping, prima che io ricevo l'address non ho informazioni sulla frequenza, quindi come faccio a ricevere la frequenza? 
+Per inquiry si trasmette il pacchetto su 32 canali (non tutti e 79) e si cambia la frequenza ogni 312.5 ms, perché il master sta trasmettendo l'inquiry e nell'altro pezzo dello slot si aspetta di ricevere. Il tempo totale che impiego per trasmettere su tutti i 32 canali è di 10 secondi, quindi se non ricevo una risposta entro 10 secondi, allora posso dire che non ci sono dispositivi vicini.\\
+Ci metto 10 millisecondi per trasmettere completamente il treno, e questo viene trasmesso 256 volte prima di trasmettere un altro treno.\\
+
+Dopo l'inquiry mando un pacchetto di page.\\
+
+\textbf{Stack di protocolli} Il bluetooth é stato creato per sostituire i cavi, LA STRUTTURA SI SALTA.
 
 \paragraph{Bluetooth low energy}
+Il protocollo é totalmente diverso rispetto al bluetooth classic quindi non sono compatibili.\\
+BLE usa meno energia rispetto al bluetooth classic, perché è stato progettato per essere utilizzato in dispositivi a batteria, come i sensori, i dispositivi indossabili, e altri dispositivi che richiedono una lunga durata della batteria.\\
+Usa 40 canali di cui solo 37 davvero utilizati e gli altri 3 sono canali di advertising, che vengono utilizzati per trasmettere informazioni sui dispositivi e per facilitare la connessione tra i dispositivi.\\
+Connessione rapida e semplice, è stato progettato per essere utilizzato in dispositivi a batteria, quindi è stato progettato per essere facile da usare e da configurare, e per essere compatibile con una vasta gamma di dispositivi.\\
+Sicurezza, usiamo sistemi di sicurezza avanzati, come la crittografia, l'autenticazione, e la protezione contro gli attacchi di spoofing, per proteggere i dati trasmessi tra i dispositivi.ECDH.\\
+La velocitá di trasmissioni é stata calcolata per collegare dispositivi anche lontani. Sono dispositivi solo broadcast, quindi non c'è una connessione diretta tra i dispositivi, ma i dispositivi possono trasmettere informazioni a tutti i dispositivi vicini, e questo mi permette di connettere dispositivi che si trovano a distanze maggiori rispetto al bluetooth classic. Siccome le distanze devono essere maggiori, mantengo la modulazione GFSK, ma scendo a 125 kbps, e questo mi permette di aumentare la portata della connessione. Infatti se sto molto lontano il rapporto segnale-rumore è molto basso, quindi devo usare una modulazione più semplice per essere in grado di decodificare il segnale, e questo mi permette di aumentare la portata della connessione.\\
+
+I canali 37,38, 39 sono i canali di servizio, usati per gli advertisments (broadcasting e discover) e per la connessione, e sono posizionati in modo da evitare interferenze con il wifi, che occupa una banda più ampia.\\
+La topologia non é necessariamenter a stella ma puó essere a mesh. Non abbiamo pi'master o slave, ma abbiamo central e peripheral, il central è il dispositivo che inizia la connessione, mentre il peripheral è il dispositivo che risponde alla connessione, e questo mi permette di connettere dispositivi che si trovano a distanze maggiori rispetto al bluetooth classic.\\
+ 
+\textbf{Connession Interval - CI} Il central invia un pacchetto di connessione al peripheral, e questo pacchetto contiene un campo chiamato Connession Interval (CI), che indica al peripheral quanto spesso deve rispondere al central, e questo mi permette di gestire la durata della connessione e il consumo energetico dei dispositivi. Il CI può essere impostato su un valore compreso tra 7.5 ms e 4 s, e questo mi permette di gestire la durata della connessione e il consumo energetico dei dispositivi a seconda delle esigenze dell'applicazione.\\
+
+\textbf{Sequence Number - SN} Il central e il peripheral mantengono un contatore chiamato Sequence Number (SN), che viene incrementato ogni volta che viene trasmesso un pacchetto, e questo mi permette di gestire la sequenza dei pacchetti e di evitare la perdita di pacchetti.\\
+
+\textbf{Next Expected Sequence Number - NESN} Il central e il peripheral mantengono un contatore chiamato Next Expected Sequence Number (NESN), che indica al dispositivo di destinazione quale pacchetto si aspetta di ricevere successivamente, e questo mi permette di gestire la sequenza dei pacchetti e di evitare la perdita di pacchetti.\\
+
+\paragraph{Connessioni BLE}
+Nasce come advertising della periferica, quindi il peripheral trasmette un pacchetto di advertising, e il central riceve questo pacchetto e decide se vuole connettersi o meno, se vuole connettersi, allora invia un pacchetto di connessione al peripheral, e questo pacchetto contiene un campo chiamato Connession Interval (CI), che indica al peripheral quanto spesso deve rispondere al central, e questo mi permette di gestire la durata della connessione e il consumo energetico dei dispositivi.\\
+Il central e il peripheral mantengono un contatore chiamato Sequence Number (SN), che viene incrementato ogni volta che viene trasmesso un pacchetto, e questo mi permette di gestire la sequenza dei pacchetti e di evitare la perdita di pacchetti. Il central e il peripheral mantengono un contatore chiamato Next Expected Sequence Number (NESN), che indica al dispositivo di destinazione quale pacchetto si aspetta di ricevere successivamente, e questo mi permette di gestire la sequenza dei pacchetti e di evitare la perdita di pacchetti.\\
+Il central e il peripheral possono trasmettere pacchetti in modo asincrono, quindi non è necessario che il central trasmetta un pacchetto ogni volta che riceve un pacchetto dal peripheral, e questo mi permette di gestire la durata della connessione e il consumo energetico dei dispositivi a seconda delle esigenze dell'applicazione.\\
+Il central e il peripheral possono trasmettere pacchetti in modo sincrono, quindi è necessario che il central trasmetta un pacchetto ogni volta che riceve un pacchetto dal peripheral, e questo mi permette di gestire la durata della connessione e il consumo energetico dei dispositivi a seconda delle esigenze dell'applicazione.\\
+BOH.
+
